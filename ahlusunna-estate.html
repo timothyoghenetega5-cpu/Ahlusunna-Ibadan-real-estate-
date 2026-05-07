@@ -1,0 +1,1706 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Ahlusunna Estate — Live Above Ordinary | Ibadan, Nigeria</title>
+<meta name="description" content="Ahlusunna Estate Ibadan — A premium residential estate crafted for comfort, security, and timeless value. Modern African luxury living in Ibadan, Oyo State."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600&family=Jost:wght@100;200;300;400;500&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<style>
+:root {
+  --gold: #C9A84C;
+  --gold-light: #E8C97A;
+  --gold-pale: #F5E6C0;
+  --black: #0A0A0A;
+  --black-mid: #111111;
+  --black-soft: #1A1A1A;
+  --grey-dark: #222222;
+  --grey-mid: #3A3A3A;
+  --grey-light: #888888;
+  --white: #FAFAFA;
+  --white-soft: #F0EDE8;
+  --cream: #F7F3EC;
+  --glass-bg: rgba(255,255,255,0.04);
+  --glass-border: rgba(201,168,76,0.2);
+  --shadow-gold: 0 0 60px rgba(201,168,76,0.15);
+  --font-serif: 'Cormorant Garamond', 'Playfair Display', Georgia, serif;
+  --font-sans: 'Jost', sans-serif;
+}
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;font-size:16px}
+body{background:var(--black);color:var(--white);font-family:var(--font-sans);overflow-x:hidden;cursor:none}
+
+/* === CUSTOM CURSOR === */
+.cursor{position:fixed;pointer-events:none;z-index:99999;mix-blend-mode:difference;transition:transform .15s ease}
+.cursor-dot{width:6px;height:6px;background:var(--gold);border-radius:50%;position:fixed;pointer-events:none;z-index:99999;transform:translate(-50%,-50%);transition:transform .08s ease}
+.cursor-ring{width:36px;height:36px;border:1px solid var(--gold-light);border-radius:50%;position:fixed;pointer-events:none;z-index:99998;transform:translate(-50%,-50%);transition:transform .18s ease, width .25s ease, height .25s ease, opacity .25s ease}
+.cursor-ring.expanded{width:64px;height:64px;opacity:.5}
+
+/* === SCROLL PROGRESS === */
+#progress-bar{position:fixed;top:0;left:0;height:2px;background:linear-gradient(90deg,var(--gold),var(--gold-light));z-index:9999;width:0%;transition:width .1s linear}
+
+/* === LOADING SCREEN === */
+#loader{position:fixed;inset:0;background:var(--black);z-index:100000;display:flex;flex-direction:column;align-items:center;justify-content:center;transition:opacity .8s ease, visibility .8s ease}
+#loader.hidden{opacity:0;visibility:hidden}
+.loader-logo{font-family:var(--font-serif);font-size:2.2rem;font-weight:300;letter-spacing:.25em;color:var(--white);margin-bottom:2rem;opacity:0;animation:fadeUp .8s ease .3s forwards}
+.loader-tagline{font-family:var(--font-sans);font-size:.65rem;font-weight:200;letter-spacing:.5em;text-transform:uppercase;color:var(--gold);opacity:0;animation:fadeUp .8s ease .6s forwards;margin-bottom:3rem}
+.loader-bar-wrap{width:240px;height:1px;background:rgba(255,255,255,.1);position:relative;overflow:hidden}
+.loader-bar-fill{height:100%;background:linear-gradient(90deg,var(--gold),var(--gold-light));width:0%;animation:loaderFill 2s ease 0.8s forwards}
+.loader-pct{font-family:var(--font-sans);font-size:.6rem;letter-spacing:.3em;color:var(--grey-light);margin-top:.8rem;opacity:0;animation:fadeUp .5s ease 1s forwards}
+
+@keyframes loaderFill{to{width:100%}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+
+/* === NAV === */
+nav{position:fixed;top:0;left:0;right:0;z-index:9000;padding:1.5rem 4rem;display:flex;align-items:center;justify-content:space-between;transition:all .5s ease}
+nav.scrolled{background:rgba(10,10,10,.92);backdrop-filter:blur(20px);border-bottom:1px solid rgba(201,168,76,.12);padding:1rem 4rem}
+.nav-logo{display:flex;flex-direction:column;gap:.15rem}
+.nav-logo-name{font-family:var(--font-serif);font-size:1.35rem;font-weight:400;letter-spacing:.12em;color:var(--white)}
+.nav-logo-sub{font-size:.55rem;font-weight:200;letter-spacing:.45em;text-transform:uppercase;color:var(--gold)}
+.nav-links{display:flex;align-items:center;gap:2.5rem}
+.nav-links a{font-size:.65rem;font-weight:300;letter-spacing:.25em;text-transform:uppercase;color:rgba(255,255,255,.7);text-decoration:none;transition:color .3s ease;position:relative}
+.nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:1px;background:var(--gold);transition:width .3s ease}
+.nav-links a:hover{color:var(--gold)}
+.nav-links a:hover::after{width:100%}
+.nav-cta{background:linear-gradient(135deg,var(--gold),var(--gold-light));color:var(--black);padding:.55rem 1.5rem;font-size:.6rem;font-weight:500;letter-spacing:.2em;text-transform:uppercase;border:none;cursor:pointer;transition:all .3s ease;font-family:var(--font-sans)}
+.nav-cta:hover{transform:translateY(-1px);box-shadow:0 8px 30px rgba(201,168,76,.4)}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px}
+.hamburger span{width:24px;height:1px;background:var(--white);transition:all .3s ease;display:block}
+
+/* === HERO === */
+#hero{height:100vh;min-height:700px;position:relative;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.hero-video-wrap{position:absolute;inset:0;z-index:0}
+.hero-video-wrap video{width:100%;height:100%;object-fit:cover;opacity:.35}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(10,10,10,.85) 0%,rgba(10,10,10,.5) 50%,rgba(10,10,10,.8) 100%);z-index:1}
+.hero-grain{position:absolute;inset:0;z-index:2;opacity:.04;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");background-size:200px}
+.hero-content{position:relative;z-index:3;text-align:center;max-width:900px;padding:0 2rem}
+.hero-eyebrow{font-size:.6rem;font-weight:200;letter-spacing:.6em;text-transform:uppercase;color:var(--gold);margin-bottom:1.5rem;opacity:0;animation:fadeUp 1s ease 2.6s forwards}
+.hero-headline{font-family:var(--font-serif);font-size:clamp(3.5rem,8vw,7rem);font-weight:300;line-height:1.05;letter-spacing:.02em;color:var(--white);margin-bottom:1.5rem;opacity:0;animation:fadeUp 1s ease 2.8s forwards}
+.hero-headline em{font-style:italic;color:var(--gold)}
+.hero-sub{font-size:clamp(.85rem,1.5vw,1rem);font-weight:200;line-height:1.8;color:rgba(255,255,255,.65);max-width:560px;margin:0 auto 2.5rem;letter-spacing:.04em;opacity:0;animation:fadeUp 1s ease 3s forwards}
+.hero-btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;opacity:0;animation:fadeUp 1s ease 3.2s forwards}
+.btn-primary{background:linear-gradient(135deg,var(--gold),var(--gold-light));color:var(--black);padding:.85rem 2.2rem;font-size:.65rem;font-weight:500;letter-spacing:.2em;text-transform:uppercase;border:none;cursor:pointer;transition:all .4s ease;font-family:var(--font-sans);text-decoration:none;display:inline-block}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 16px 50px rgba(201,168,76,.45)}
+.btn-outline{background:transparent;color:var(--white);padding:.85rem 2.2rem;font-size:.65rem;font-weight:300;letter-spacing:.2em;text-transform:uppercase;border:1px solid rgba(255,255,255,.3);cursor:pointer;transition:all .4s ease;font-family:var(--font-sans);text-decoration:none;display:inline-block}
+.btn-outline:hover{border-color:var(--gold);color:var(--gold);transform:translateY(-2px)}
+.hero-stats{position:absolute;bottom:3rem;left:50%;transform:translateX(-50%);display:flex;gap:3rem;z-index:3;flex-wrap:wrap;justify-content:center;opacity:0;animation:fadeUp 1s ease 3.4s forwards}
+.hero-stat{text-align:center}
+.hero-stat-icon{font-size:1.2rem;margin-bottom:.4rem;color:var(--gold)}
+.hero-stat-label{font-size:.55rem;font-weight:200;letter-spacing:.3em;text-transform:uppercase;color:rgba(255,255,255,.5)}
+.hero-scroll{position:absolute;bottom:2rem;right:4rem;display:flex;flex-direction:column;align-items:center;gap:.6rem;z-index:3;opacity:0;animation:fadeUp 1s ease 3.6s forwards}
+.hero-scroll span{font-size:.5rem;letter-spacing:.35em;text-transform:uppercase;color:rgba(255,255,255,.4);writing-mode:vertical-rl}
+.scroll-line{width:1px;height:50px;background:linear-gradient(to bottom,transparent,var(--gold));animation:scrollPulse 2s ease infinite}
+@keyframes scrollPulse{0%,100%{opacity:.3;transform:scaleY(.5);transform-origin:top}50%{opacity:1;transform:scaleY(1)}}
+
+/* === SECTIONS GENERAL === */
+section{position:relative;overflow:hidden}
+.section-eyebrow{font-size:.55rem;font-weight:200;letter-spacing:.55em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem}
+.section-title{font-family:var(--font-serif);font-size:clamp(2.2rem,4.5vw,3.8rem);font-weight:300;line-height:1.1;letter-spacing:.02em;margin-bottom:1.5rem}
+.section-title em{font-style:italic;color:var(--gold)}
+.section-body{font-size:.9rem;font-weight:200;line-height:1.9;color:rgba(255,255,255,.55);letter-spacing:.03em}
+.gold-line{width:40px;height:1px;background:var(--gold);margin-bottom:1.5rem}
+
+/* === ABOUT === */
+#about{padding:10rem 4rem;background:var(--black)}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:center;max-width:1200px;margin:0 auto}
+.about-visual{position:relative}
+.about-img-main{width:100%;aspect-ratio:3/4;object-fit:cover;display:block;background:linear-gradient(135deg,var(--grey-dark),var(--black-soft));position:relative}
+.about-img-placeholder{width:100%;aspect-ratio:3/4;background:linear-gradient(135deg,#1a1a1a 0%,#2a2a2a 50%,#1a1a1a 100%);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+.about-img-placeholder::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(201,168,76,.08),transparent)}
+.estate-scene{width:100%;height:100%;position:relative;display:flex;align-items:center;justify-content:center}
+.estate-scene svg{width:80%;opacity:.6}
+.about-img-badge{position:absolute;bottom:-2rem;right:-2rem;background:var(--black-soft);border:1px solid var(--glass-border);padding:1.5rem 2rem;backdrop-filter:blur(20px)}
+.about-badge-num{font-family:var(--font-serif);font-size:2.5rem;font-weight:300;color:var(--gold);line-height:1}
+.about-badge-text{font-size:.55rem;font-weight:200;letter-spacing:.3em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-top:.3rem}
+.about-text{padding-left:2rem}
+.about-quote{font-family:var(--font-serif);font-size:1.25rem;font-weight:300;font-style:italic;color:rgba(255,255,255,.4);border-left:1px solid var(--gold);padding-left:1.5rem;margin:2rem 0;line-height:1.8}
+.about-features{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:2.5rem}
+.about-feature{display:flex;align-items:flex-start;gap:.75rem}
+.about-feature-dot{width:6px;height:6px;background:var(--gold);border-radius:50%;margin-top:.45rem;flex-shrink:0}
+.about-feature-text{font-size:.75rem;font-weight:200;letter-spacing:.05em;color:rgba(255,255,255,.55);line-height:1.6}
+
+/* === WHY CHOOSE === */
+#why{padding:10rem 4rem;background:var(--black-soft)}
+.why-header{text-align:center;max-width:600px;margin:0 auto 5rem}
+.why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;max-width:1200px;margin:0 auto}
+.why-card{background:var(--glass-bg);border:1px solid var(--glass-border);padding:2.5rem 2rem;position:relative;overflow:hidden;transition:all .5s ease;cursor:default}
+.why-card::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(201,168,76,.05),transparent);opacity:0;transition:opacity .5s ease}
+.why-card:hover{transform:translateY(-6px);border-color:var(--gold);box-shadow:var(--shadow-gold)}
+.why-card:hover::before{opacity:1}
+.why-card-icon{font-size:2rem;margin-bottom:1.5rem;display:block}
+.why-card-title{font-family:var(--font-serif);font-size:1.3rem;font-weight:400;color:var(--white);margin-bottom:.75rem}
+.why-card-text{font-size:.78rem;font-weight:200;line-height:1.8;color:rgba(255,255,255,.45);letter-spacing:.02em}
+.why-card-num{position:absolute;top:1.5rem;right:2rem;font-family:var(--font-serif);font-size:3rem;font-weight:300;color:rgba(201,168,76,.08);line-height:1}
+
+/* === PROPERTIES === */
+#properties{padding:10rem 4rem;background:var(--black)}
+.properties-header{max-width:1200px;margin:0 auto 4rem;display:flex;justify-content:space-between;align-items:flex-end}
+.properties-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;max-width:1200px;margin:0 auto}
+.prop-card{position:relative;overflow:hidden;cursor:pointer;group:hover}
+.prop-card-img{width:100%;aspect-ratio:4/5;position:relative;overflow:hidden}
+.prop-visual{width:100%;height:100%;display:flex;align-items:center;justify-content:center;position:relative;transition:transform .8s ease}
+.prop-card:hover .prop-visual{transform:scale(1.05)}
+.prop-visual-bg{position:absolute;inset:0;background:linear-gradient(180deg,transparent 40%,rgba(10,10,10,.95) 100%)}
+.prop-card-badge{position:absolute;top:1.5rem;left:1.5rem;background:var(--gold);color:var(--black);padding:.3rem .8rem;font-size:.55rem;font-weight:500;letter-spacing:.2em;text-transform:uppercase}
+.prop-card-body{position:absolute;bottom:0;left:0;right:0;padding:2rem 1.5rem;transform:translateY(30px);transition:transform .4s ease}
+.prop-card:hover .prop-card-body{transform:none}
+.prop-type{font-size:.55rem;font-weight:200;letter-spacing:.35em;text-transform:uppercase;color:var(--gold);margin-bottom:.4rem}
+.prop-name{font-family:var(--font-serif);font-size:1.4rem;font-weight:400;color:var(--white);margin-bottom:.5rem}
+.prop-price{font-family:var(--font-serif);font-size:1.1rem;font-weight:300;color:var(--gold-light);margin-bottom:.8rem}
+.prop-features{display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:1rem}
+.prop-feature{font-size:.6rem;font-weight:200;letter-spacing:.1em;color:rgba(255,255,255,.5)}
+.prop-cta{font-size:.6rem;font-weight:300;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);text-decoration:none;display:flex;align-items:center;gap:.5rem;opacity:0;transition:opacity .3s ease}
+.prop-cta::after{content:'→';transition:transform .3s ease}
+.prop-cta:hover::after{transform:translateX(4px)}
+.prop-card:hover .prop-cta{opacity:1}
+
+/* === LIFESTYLE === */
+#lifestyle{padding:10rem 4rem;background:var(--black-soft);position:relative}
+#lifestyle::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent)}
+.lifestyle-header{text-align:center;max-width:600px;margin:0 auto 5rem}
+.lifestyle-mosaic{display:grid;grid-template-columns:2fr 1fr 1fr;grid-template-rows:auto auto;gap:1rem;max-width:1200px;margin:0 auto}
+.life-cell{overflow:hidden;position:relative}
+.life-cell:first-child{grid-row:1/3}
+.life-visual{width:100%;height:280px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;transition:transform .6s ease}
+.life-cell:first-child .life-visual{height:100%}
+.life-cell:hover .life-visual{transform:scale(1.04)}
+.life-overlay{position:absolute;inset:0;background:linear-gradient(180deg,transparent 60%,rgba(10,10,10,.7) 100%)}
+.life-label{position:absolute;bottom:1rem;left:1.2rem;font-size:.58rem;font-weight:200;letter-spacing:.3em;text-transform:uppercase;color:rgba(255,255,255,.7)}
+
+/* === COUNTERS === */
+#counters{padding:6rem 4rem;background:var(--black);border-top:1px solid rgba(201,168,76,.1);border-bottom:1px solid rgba(201,168,76,.1)}
+.counters-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2rem;max-width:1100px;margin:0 auto;text-align:center}
+.counter-item{}
+.counter-num{font-family:var(--font-serif);font-size:clamp(2.5rem,5vw,4rem);font-weight:300;color:var(--gold);line-height:1}
+.counter-suf{font-family:var(--font-serif);font-size:2rem;font-weight:300;color:var(--gold)}
+.counter-label{font-size:.6rem;font-weight:200;letter-spacing:.3em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-top:.5rem}
+.counter-line{width:30px;height:1px;background:var(--gold);margin:.8rem auto 0;opacity:.4}
+
+/* === TESTIMONIALS === */
+#testimonials{padding:10rem 4rem;background:var(--black-soft)}
+.testi-header{text-align:center;max-width:600px;margin:0 auto 4rem}
+.testi-slider{position:relative;max-width:1100px;margin:0 auto;overflow:hidden}
+.testi-track{display:flex;transition:transform .6s cubic-bezier(.25,.1,.25,1)}
+.testi-card{min-width:calc(33.33% - 1rem);margin-right:1.5rem;background:var(--glass-bg);border:1px solid var(--glass-border);padding:2.5rem;position:relative;flex-shrink:0}
+.testi-card::before{content:'\201C';font-family:var(--font-serif);font-size:6rem;color:var(--gold);opacity:.15;position:absolute;top:-.5rem;left:1rem;line-height:1}
+.testi-stars{display:flex;gap:.2rem;margin-bottom:1.2rem}
+.testi-stars span{color:var(--gold);font-size:.8rem}
+.testi-text{font-family:var(--font-serif);font-size:1rem;font-weight:300;font-style:italic;color:rgba(255,255,255,.75);line-height:1.9;margin-bottom:1.5rem}
+.testi-author{display:flex;align-items:center;gap:.8rem}
+.testi-avatar{width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,var(--gold),var(--gold-light));display:flex;align-items:center;justify-content:center;font-family:var(--font-serif);font-size:1rem;font-weight:400;color:var(--black)}
+.testi-name{font-size:.75rem;font-weight:400;letter-spacing:.05em;color:var(--white)}
+.testi-role{font-size:.6rem;font-weight:200;letter-spacing:.15em;color:rgba(255,255,255,.35);margin-top:.1rem}
+.testi-controls{display:flex;justify-content:center;gap:1rem;margin-top:2.5rem}
+.testi-btn{width:40px;height:40px;border:1px solid var(--glass-border);background:transparent;color:var(--gold);cursor:pointer;font-size:1rem;transition:all .3s ease;display:flex;align-items:center;justify-content:center}
+.testi-btn:hover{background:var(--gold);color:var(--black);border-color:var(--gold)}
+
+/* === INVESTMENT === */
+#investment{padding:10rem 4rem;background:var(--black)}
+.invest-grid{display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:center;max-width:1200px;margin:0 auto}
+.invest-text{}
+.invest-bars{margin-top:3rem}
+.invest-bar{margin-bottom:1.8rem}
+.invest-bar-header{display:flex;justify-content:space-between;margin-bottom:.5rem}
+.invest-bar-label{font-size:.65rem;font-weight:200;letter-spacing:.2em;color:rgba(255,255,255,.55)}
+.invest-bar-val{font-size:.65rem;font-weight:300;color:var(--gold)}
+.invest-bar-track{height:3px;background:rgba(255,255,255,.08);position:relative;overflow:hidden}
+.invest-bar-fill{height:100%;background:linear-gradient(90deg,var(--gold),var(--gold-light));width:0;transition:width 1.5s cubic-bezier(.25,.1,.25,1)}
+.invest-highlights{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem}
+.invest-highlight{background:var(--glass-bg);border:1px solid var(--glass-border);padding:2rem;text-align:center;transition:all .4s ease}
+.invest-highlight:hover{border-color:var(--gold);transform:translateY(-4px)}
+.invest-h-icon{font-size:1.8rem;margin-bottom:.8rem}
+.invest-h-title{font-family:var(--font-serif);font-size:1.1rem;font-weight:400;color:var(--gold);margin-bottom:.5rem}
+.invest-h-text{font-size:.72rem;font-weight:200;line-height:1.7;color:rgba(255,255,255,.4)}
+
+/* === MORTGAGE CALCULATOR === */
+#mortgage{padding:8rem 4rem;background:var(--black-soft)}
+.mortgage-inner{max-width:900px;margin:0 auto}
+.mortgage-header{text-align:center;margin-bottom:4rem}
+.mortgage-card{background:var(--glass-bg);border:1px solid var(--glass-border);padding:3rem;backdrop-filter:blur(20px)}
+.mortgage-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem}
+.form-group{margin-bottom:1.5rem}
+.form-label{display:block;font-size:.6rem;font-weight:200;letter-spacing:.25em;text-transform:uppercase;color:var(--gold);margin-bottom:.6rem}
+.form-input{width:100%;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);color:var(--white);padding:.75rem 1rem;font-family:var(--font-sans);font-size:.85rem;font-weight:200;outline:none;transition:border-color .3s ease}
+.form-input:focus{border-color:var(--gold)}
+.form-input[type=range]{padding:0;height:3px;appearance:none;background:rgba(255,255,255,.1);cursor:pointer;border:none}
+.form-input[type=range]::-webkit-slider-thumb{appearance:none;width:16px;height:16px;border-radius:50%;background:var(--gold)}
+.mortgage-result{background:rgba(201,168,76,.06);border:1px solid var(--gold);padding:2rem;margin-top:1.5rem;text-align:center}
+.mortgage-result-label{font-size:.58rem;letter-spacing:.35em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:.5rem}
+.mortgage-result-amount{font-family:var(--font-serif);font-size:2.5rem;font-weight:300;color:var(--gold)}
+.mortgage-result-note{font-size:.65rem;font-weight:200;color:rgba(255,255,255,.3);margin-top:.4rem}
+
+/* === GALLERY === */
+#gallery{padding:10rem 4rem;background:var(--black)}
+.gallery-header{text-align:center;max-width:600px;margin:0 auto 4rem}
+.gallery-grid{display:grid;grid-template-columns:repeat(4,1fr);grid-template-rows:auto auto;gap:.8rem;max-width:1200px;margin:0 auto}
+.gal-item{overflow:hidden;position:relative;cursor:pointer}
+.gal-item:nth-child(1){grid-column:1/3;grid-row:1/3}
+.gal-item:nth-child(5){grid-column:3/5}
+.gal-visual{width:100%;height:220px;transition:transform .6s ease;display:flex;align-items:center;justify-content:center;position:relative}
+.gal-item:nth-child(1) .gal-visual{height:460px}
+.gal-item:nth-child(5) .gal-visual{height:220px}
+.gal-item:hover .gal-visual{transform:scale(1.06)}
+.gal-overlay{position:absolute;inset:0;background:rgba(10,10,10,.4);opacity:0;transition:opacity .4s ease;display:flex;align-items:center;justify-content:center}
+.gal-item:hover .gal-overlay{opacity:1}
+.gal-zoom{font-size:1.5rem;color:var(--gold)}
+
+/* === CONTACT === */
+#contact{padding:10rem 4rem;background:var(--black-soft)}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:6rem;max-width:1200px;margin:0 auto}
+.contact-info{}
+.contact-detail{display:flex;gap:1rem;margin-bottom:1.5rem;align-items:flex-start}
+.contact-detail-icon{color:var(--gold);font-size:1rem;margin-top:.1rem;flex-shrink:0}
+.contact-detail-text{font-size:.82rem;font-weight:200;line-height:1.7;color:rgba(255,255,255,.55)}
+.contact-detail-label{font-size:.55rem;letter-spacing:.25em;text-transform:uppercase;color:var(--gold);margin-bottom:.2rem}
+.contact-btns{display:flex;gap:1rem;flex-wrap:wrap;margin-top:2rem}
+.btn-call,.btn-whatsapp{display:flex;align-items:center;gap:.6rem;padding:.7rem 1.4rem;font-size:.65rem;font-weight:300;letter-spacing:.15em;text-transform:uppercase;border:none;cursor:pointer;transition:all .3s ease;font-family:var(--font-sans);text-decoration:none}
+.btn-call{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.15);color:var(--white)}
+.btn-call:hover{border-color:var(--gold);color:var(--gold)}
+.btn-whatsapp{background:#25D366;color:var(--black)}
+.btn-whatsapp:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(37,211,102,.3)}
+.map-embed{width:100%;height:200px;background:linear-gradient(135deg,#1a1a1a,#222);margin-top:2rem;border:1px solid var(--glass-border);overflow:hidden;position:relative;display:flex;align-items:center;justify-content:center}
+.map-placeholder{text-align:center}
+.map-placeholder-icon{font-size:2rem;color:var(--gold);margin-bottom:.5rem}
+.map-placeholder-text{font-size:.7rem;font-weight:200;letter-spacing:.2em;color:rgba(255,255,255,.4)}
+.contact-form{}
+.contact-form .form-group{margin-bottom:1.2rem}
+.contact-form .btn-primary{width:100%;display:block;text-align:center;border:none;cursor:pointer;font-family:var(--font-sans)}
+
+/* === FOOTER === */
+footer{background:var(--black);border-top:1px solid rgba(201,168,76,.12);padding:5rem 4rem 3rem}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:4rem;max-width:1200px;margin:0 auto;padding-bottom:3rem;border-bottom:1px solid rgba(255,255,255,.06)}
+.footer-brand-name{font-family:var(--font-serif);font-size:1.4rem;font-weight:400;letter-spacing:.12em;color:var(--white);margin-bottom:.3rem}
+.footer-brand-sub{font-size:.55rem;font-weight:200;letter-spacing:.4em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem}
+.footer-brand-desc{font-size:.75rem;font-weight:200;line-height:1.8;color:rgba(255,255,255,.35);max-width:260px}
+.footer-col-title{font-size:.58rem;font-weight:300;letter-spacing:.35em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:1.2rem}
+.footer-links{list-style:none}
+.footer-links li{margin-bottom:.6rem}
+.footer-links a{font-size:.75rem;font-weight:200;color:rgba(255,255,255,.35);text-decoration:none;transition:color .3s ease}
+.footer-links a:hover{color:var(--gold)}
+.footer-bottom{max-width:1200px;margin:2rem auto 0;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
+.footer-copy{font-size:.65rem;font-weight:200;color:rgba(255,255,255,.2);letter-spacing:.05em}
+.footer-social{display:flex;gap:1rem}
+.footer-social a{width:36px;height:36px;border:1px solid rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.35);font-size:.8rem;text-decoration:none;transition:all .3s ease}
+.footer-social a:hover{border-color:var(--gold);color:var(--gold)}
+
+/* === FLOATING WIDGETS === */
+.floating-whatsapp{position:fixed;bottom:2rem;right:2rem;z-index:8000;display:flex;flex-direction:column;align-items:flex-end;gap:.8rem}
+.wa-bubble{background:#25D366;color:white;width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.5rem;cursor:pointer;box-shadow:0 8px 30px rgba(37,211,102,.4);transition:transform .3s ease;text-decoration:none}
+.wa-bubble:hover{transform:scale(1.1)}
+.wa-tooltip{background:var(--black-soft);border:1px solid var(--glass-border);padding:.5rem 1rem;font-size:.65rem;font-weight:200;letter-spacing:.1em;color:var(--white);white-space:nowrap;backdrop-filter:blur(10px);opacity:0;transform:translateX(10px);transition:all .3s ease;pointer-events:none}
+.floating-whatsapp:hover .wa-tooltip{opacity:1;transform:none}
+
+/* === AI CHATBOT === */
+#chatbot-widget{position:fixed;bottom:5.5rem;right:2rem;z-index:7999;display:none}
+#chatbot-widget.open{display:block}
+.chatbot-box{width:320px;background:var(--black-soft);border:1px solid var(--glass-border);backdrop-filter:blur(20px);box-shadow:0 20px 60px rgba(0,0,0,.6)}
+.chatbot-header{background:linear-gradient(135deg,rgba(201,168,76,.15),rgba(201,168,76,.05));padding:1rem 1.2rem;border-bottom:1px solid var(--glass-border);display:flex;justify-content:space-between;align-items:center}
+.chatbot-title{font-size:.7rem;font-weight:300;letter-spacing:.2em;text-transform:uppercase;color:var(--gold)}
+.chatbot-close{background:none;border:none;color:rgba(255,255,255,.4);cursor:pointer;font-size:.9rem;transition:color .3s ease}
+.chatbot-close:hover{color:var(--gold)}
+.chatbot-body{height:240px;overflow-y:auto;padding:1rem;display:flex;flex-direction:column;gap:.8rem}
+.chat-msg{max-width:80%;padding:.7rem .9rem;font-size:.72rem;font-weight:200;line-height:1.6}
+.chat-msg.bot{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);align-self:flex-start;color:rgba(255,255,255,.7)}
+.chat-msg.user{background:rgba(201,168,76,.15);border:1px solid rgba(201,168,76,.25);align-self:flex-end;color:var(--gold-pale)}
+.chatbot-input{display:flex;border-top:1px solid var(--glass-border)}
+.chatbot-input input{flex:1;background:transparent;border:none;padding:.7rem 1rem;color:var(--white);font-family:var(--font-sans);font-size:.75rem;font-weight:200;outline:none}
+.chatbot-input button{background:var(--gold);border:none;padding:.7rem 1rem;color:var(--black);cursor:pointer;font-size:.9rem;transition:background .3s ease}
+.chatbot-input button:hover{background:var(--gold-light)}
+.chat-toggle{position:fixed;bottom:5.5rem;right:2rem;z-index:8001;display:none}
+.chat-toggle-btn{width:46px;height:46px;background:var(--black-soft);border:1px solid var(--glass-border);color:var(--gold);font-size:1.1rem;cursor:pointer;transition:all .3s ease;display:flex;align-items:center;justify-content:center;backdrop-filter:blur(10px)}
+.chat-toggle-btn:hover{background:rgba(201,168,76,.1)}
+
+/* Show chat toggle after scroll */
+.chat-toggle.visible{display:block}
+#chatbot-widget.open ~ .chat-toggle .chat-toggle-btn{transform:rotate(180deg)}
+
+/* === ESTATE MAP === */
+#estate-map{padding:8rem 4rem;background:var(--black-soft)}
+.map-inner{max-width:1000px;margin:0 auto}
+.map-header{text-align:center;margin-bottom:4rem}
+.animated-map{width:100%;aspect-ratio:16/9;background:linear-gradient(135deg,#0f1a10,#0a120b);border:1px solid rgba(201,168,76,.2);position:relative;overflow:hidden}
+.map-grid-lines{position:absolute;inset:0;background-image:linear-gradient(rgba(201,168,76,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(201,168,76,.04) 1px,transparent 1px);background-size:40px 40px}
+.map-road{position:absolute;background:rgba(201,168,76,.25)}
+.map-road.h{height:3px;transform-origin:left}
+.map-road.v{width:3px;transform-origin:top}
+.map-node{position:absolute;width:10px;height:10px;border-radius:50%;background:var(--gold);border:2px solid var(--gold-light);transform:translate(-50%,-50%);animation:mapPulse 3s ease infinite}
+.map-node.main{width:16px;height:16px;animation-delay:0s}
+.map-pulse{position:absolute;width:40px;height:40px;border:1px solid var(--gold);border-radius:50%;transform:translate(-50%,-50%);animation:mapRing 3s ease infinite;opacity:0}
+@keyframes mapPulse{0%,100%{box-shadow:0 0 8px rgba(201,168,76,.6)}50%{box-shadow:0 0 20px rgba(201,168,76,1)}}
+@keyframes mapRing{0%{width:16px;height:16px;opacity:.8}100%{width:60px;height:60px;opacity:0}}
+.map-label{position:absolute;font-size:.55rem;letter-spacing:.2em;color:rgba(201,168,76,.7);font-weight:200;white-space:nowrap}
+.map-legend{display:flex;gap:2rem;justify-content:center;margin-top:1.5rem;flex-wrap:wrap}
+.map-legend-item{display:flex;align-items:center;gap:.5rem;font-size:.6rem;font-weight:200;letter-spacing:.15em;color:rgba(255,255,255,.4)}
+.map-legend-dot{width:8px;height:8px;border-radius:50%;background:var(--gold)}
+
+/* === ANIMATIONS === */
+.fade-up{opacity:0;transform:translateY(30px);transition:all .8s cubic-bezier(.25,.1,.25,1)}
+.fade-up.visible{opacity:1;transform:none}
+.fade-left{opacity:0;transform:translateX(-30px);transition:all .8s cubic-bezier(.25,.1,.25,1)}
+.fade-left.visible{opacity:1;transform:none}
+.fade-right{opacity:0;transform:translateX(30px);transition:all .8s cubic-bezier(.25,.1,.25,1)}
+.fade-right.visible{opacity:1;transform:none}
+.delay-1{transition-delay:.15s}
+.delay-2{transition-delay:.3s}
+.delay-3{transition-delay:.45s}
+.delay-4{transition-delay:.6s}
+.delay-5{transition-delay:.75s}
+.delay-6{transition-delay:.9s}
+
+/* PROPERTY VISUALS — SVG placeholders with luxury feel */
+.pv-estate{background:linear-gradient(180deg,#0d1a1f 0%,#1a2f1a 40%,#0d1a0d 100%)}
+.pv-duplex{background:linear-gradient(180deg,#1a1508 0%,#2a1f0a 50%,#1a1508 100%)}
+.pv-mansion{background:linear-gradient(180deg,#0d0d1a 0%,#1a1028 50%,#0d0d1a 100%)}
+.pv-road{background:linear-gradient(180deg,#0a0f0a 0%,#151e10 50%,#0a0f0a 100%)}
+.pv-interior{background:linear-gradient(180deg,#1a1408 0%,#2a2010 50%,#1a1408 100%)}
+.life-v1{background:linear-gradient(160deg,#0a1a0a,#1a3010,#0d200d)}
+.life-v2{background:linear-gradient(160deg,#1a1f08,#252a0d,#1a1f08)}
+.life-v3{background:linear-gradient(160deg,#080d1a,#101828,#080d1a)}
+.life-v4{background:linear-gradient(160deg,#1a0808,#28100d,#1a0808)}
+.life-v5{background:linear-gradient(160deg,#0d0d0d,#1a1a1a,#0d0d0d)}
+.gal-v1{background:linear-gradient(160deg,#0d1a0d,#1a2e10)}
+.gal-v2{background:linear-gradient(160deg,#1a1508,#25200d)}
+.gal-v3{background:linear-gradient(160deg,#0d0d1f,#12102a)}
+.gal-v4{background:linear-gradient(160deg,#1a0a0a,#281212)}
+.gal-v5{background:linear-gradient(160deg,#0a1a14,#102a1e)}
+.gal-v6{background:linear-gradient(160deg,#1a1a08,#28280d)}
+
+/* Building SVG illustration style */
+.building-svg{position:absolute;bottom:0;width:100%;height:70%}
+
+/* === MOBILE === */
+@media(max-width:1024px){
+  .why-grid,.properties-grid{grid-template-columns:repeat(2,1fr)}
+  .about-grid,.invest-grid,.contact-grid,.footer-grid{grid-template-columns:1fr}
+  .about-text{padding-left:0}
+  .lifestyle-mosaic{grid-template-columns:1fr 1fr;grid-template-rows:auto}
+  .life-cell:first-child{grid-column:1/3;grid-row:auto}
+  .counters-grid{grid-template-columns:repeat(2,1fr)}
+  .gallery-grid{grid-template-columns:repeat(2,1fr)}
+  .gal-item:nth-child(1){grid-column:1/3;grid-row:auto}
+  .gal-item:nth-child(5){grid-column:auto}
+  .mortgage-grid{grid-template-columns:1fr}
+  nav{padding:1.2rem 2rem}
+  nav.scrolled{padding:.8rem 2rem}
+  #hero{padding:0 2rem}
+  .hero-stats{gap:1.5rem}
+  section{padding:6rem 2rem}
+  #about,#why,#properties,#lifestyle,#testimonials,#investment,#mortgage,#gallery,#contact,#estate-map{padding:6rem 2rem}
+  #counters{padding:4rem 2rem}
+}
+@media(max-width:768px){
+  .nav-links{display:none}
+  .hamburger{display:flex}
+  .why-grid,.properties-grid{grid-template-columns:1fr}
+  .counters-grid{grid-template-columns:repeat(2,1fr)}
+  .testi-card{min-width:calc(100% - 0rem);margin-right:0}
+  .gallery-grid{grid-template-columns:1fr 1fr}
+  .gal-item:nth-child(1){grid-column:1/3}
+  .about-img-badge{right:0;bottom:-1rem}
+  .properties-header{flex-direction:column;gap:1rem;align-items:flex-start}
+  .hero-stats{display:none}
+  .hero-scroll{display:none}
+  footer{padding:3rem 2rem}
+  .footer-grid{grid-template-columns:1fr 1fr;gap:2rem}
+}
+@media(max-width:480px){
+  .footer-grid{grid-template-columns:1fr}
+  .gallery-grid{grid-template-columns:1fr}
+  .gal-item:nth-child(1){grid-column:auto}
+  .gal-item:nth-child(5){grid-column:auto}
+  .about-features{grid-template-columns:1fr}
+  .invest-highlights{grid-template-columns:1fr}
+  .hero-btns{flex-direction:column;align-items:center}
+}
+
+/* Mobile nav overlay */
+.mobile-nav{position:fixed;inset:0;background:rgba(10,10,10,.98);z-index:8500;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2rem;transform:translateX(100%);transition:transform .5s cubic-bezier(.25,.1,.25,1)}
+.mobile-nav.open{transform:none}
+.mobile-nav a{font-family:var(--font-serif);font-size:2rem;font-weight:300;color:var(--white);text-decoration:none;letter-spacing:.1em;transition:color .3s ease}
+.mobile-nav a:hover{color:var(--gold)}
+.mobile-nav-close{position:absolute;top:2rem;right:2rem;background:none;border:1px solid rgba(255,255,255,.2);color:var(--white);width:44px;height:44px;cursor:pointer;font-size:1.2rem;transition:all .3s ease;display:flex;align-items:center;justify-content:center}
+.mobile-nav-close:hover{border-color:var(--gold);color:var(--gold)}
+
+/* Thin gold divider */
+.gold-divider{width:100%;height:1px;background:linear-gradient(90deg,transparent,rgba(201,168,76,.3),transparent);margin:0}
+</style>
+</head>
+<body>
+
+<!-- CURSOR -->
+<div class="cursor-dot" id="cursorDot"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<!-- SCROLL PROGRESS -->
+<div id="progress-bar"></div>
+
+<!-- LOADER -->
+<div id="loader">
+  <div class="loader-logo">Ahlusunna Estate</div>
+  <div class="loader-tagline">Ibadan · Oyo State · Nigeria</div>
+  <div class="loader-bar-wrap"><div class="loader-bar-fill" id="loaderFill"></div></div>
+  <div class="loader-pct">Loading Experience...</div>
+</div>
+
+<!-- MOBILE NAV -->
+<div class="mobile-nav" id="mobileNav">
+  <button class="mobile-nav-close" id="mobileClose">✕</button>
+  <a href="#about" onclick="closeMobile()">About</a>
+  <a href="#why" onclick="closeMobile()">Why Us</a>
+  <a href="#properties" onclick="closeMobile()">Properties</a>
+  <a href="#lifestyle" onclick="closeMobile()">Lifestyle</a>
+  <a href="#investment" onclick="closeMobile()">Investment</a>
+  <a href="#contact" onclick="closeMobile()">Contact</a>
+</div>
+
+<!-- NAV -->
+<nav id="navbar">
+  <div class="nav-logo">
+    <div class="nav-logo-name">Ahlusunna Estate</div>
+    <div class="nav-logo-sub">Ibadan · Oyo State</div>
+  </div>
+  <div class="nav-links">
+    <a href="#about">About</a>
+    <a href="#why">Why Us</a>
+    <a href="#properties">Properties</a>
+    <a href="#lifestyle">Lifestyle</a>
+    <a href="#testimonials">Reviews</a>
+    <a href="#investment">Investment</a>
+    <a href="#contact">Contact</a>
+  </div>
+  <button class="nav-cta" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Book Inspection</button>
+  <div class="hamburger" id="hamburger" onclick="document.getElementById('mobileNav').classList.add('open')">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-video-wrap">
+    <!-- Cinematic gradient animation simulating estate video -->
+    <canvas id="heroCanvas" style="width:100%;height:100%;display:block"></canvas>
+  </div>
+  <div class="hero-overlay"></div>
+  <div class="hero-grain"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">Ahlusunna Estate · Ibadan, Nigeria</div>
+    <h1 class="hero-headline">Live Above<br/><em>Ordinary</em></h1>
+    <p class="hero-sub">A premium residential estate crafted for comfort, security, and timeless value in the heart of Ibadan.</p>
+    <div class="hero-btns">
+      <a href="#contact" class="btn-primary">Book Inspection</a>
+      <a href="#properties" class="btn-outline">View Properties</a>
+    </div>
+  </div>
+  <div class="hero-stats">
+    <div class="hero-stat">
+      <div class="hero-stat-icon">🔐</div>
+      <div class="hero-stat-label">Secure Environment</div>
+    </div>
+    <div class="hero-stat">
+      <div class="hero-stat-icon">📍</div>
+      <div class="hero-stat-label">Prime Ibadan Location</div>
+    </div>
+    <div class="hero-stat">
+      <div class="hero-stat-icon">🏗️</div>
+      <div class="hero-stat-label">Modern Infrastructure</div>
+    </div>
+    <div class="hero-stat">
+      <div class="hero-stat-icon">📈</div>
+      <div class="hero-stat-label">Smart Investment</div>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <span>Scroll</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<div class="gold-divider"></div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-grid">
+    <div class="about-visual fade-left">
+      <div class="about-img-placeholder">
+        <div class="estate-scene">
+          <svg viewBox="0 0 400 500" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- Ground -->
+            <rect x="0" y="400" width="400" height="100" fill="rgba(20,30,15,0.8)"/>
+            <!-- Road -->
+            <rect x="160" y="350" width="80" height="150" fill="rgba(40,40,40,0.6)"/>
+            <rect x="196" y="350" width="8" height="150" fill="rgba(201,168,76,0.3)" rx="2"/>
+            <!-- Main Building -->
+            <rect x="80" y="200" width="240" height="200" fill="rgba(30,35,25,0.9)" rx="2"/>
+            <rect x="80" y="195" width="240" height="12" fill="rgba(201,168,76,0.4)"/>
+            <!-- Windows -->
+            <rect x="100" y="220" width="35" height="28" fill="rgba(201,168,76,0.15)" rx="1"/>
+            <rect x="148" y="220" width="35" height="28" fill="rgba(201,168,76,0.15)" rx="1"/>
+            <rect x="218" y="220" width="35" height="28" fill="rgba(201,168,76,0.15)" rx="1"/>
+            <rect x="266" y="220" width="35" height="28" fill="rgba(201,168,76,0.15)" rx="1"/>
+            <rect x="100" y="264" width="35" height="28" fill="rgba(201,168,76,0.2)" rx="1"/>
+            <rect x="148" y="264" width="35" height="28" fill="rgba(201,168,76,0.1)" rx="1"/>
+            <rect x="218" y="264" width="35" height="28" fill="rgba(201,168,76,0.2)" rx="1"/>
+            <rect x="266" y="264" width="35" height="28" fill="rgba(201,168,76,0.1)" rx="1"/>
+            <!-- Door -->
+            <rect x="180" y="340" width="40" height="60" fill="rgba(201,168,76,0.25)" rx="1"/>
+            <rect x="195" y="340" width="2" height="60" fill="rgba(201,168,76,0.5)"/>
+            <!-- Roof -->
+            <polygon points="70,200 200,100 330,200" fill="rgba(20,25,18,0.95)"/>
+            <polygon points="70,200 200,100 330,200" fill="none" stroke="rgba(201,168,76,0.35)" stroke-width="1"/>
+            <!-- Trees -->
+            <circle cx="50" cy="370" r="30" fill="rgba(20,50,20,0.7)"/>
+            <circle cx="50" cy="350" r="25" fill="rgba(25,60,25,0.8)"/>
+            <rect x="47" y="390" width="6" height="20" fill="rgba(30,20,10,0.6)"/>
+            <circle cx="355" cy="375" r="25" fill="rgba(20,50,20,0.7)"/>
+            <circle cx="355" cy="358" r="20" fill="rgba(25,60,25,0.8)"/>
+            <rect x="352" y="392" width="6" height="18" fill="rgba(30,20,10,0.6)"/>
+            <!-- Gate posts -->
+            <rect x="145" y="370" width="10" height="40" fill="rgba(201,168,76,0.4)"/>
+            <rect x="245" y="370" width="10" height="40" fill="rgba(201,168,76,0.4)"/>
+            <!-- Stars -->
+            <circle cx="50" cy="30" r="1.5" fill="rgba(255,255,255,0.6)"/>
+            <circle cx="120" cy="60" r="1" fill="rgba(255,255,255,0.4)"/>
+            <circle cx="280" cy="20" r="1.5" fill="rgba(255,255,255,0.5)"/>
+            <circle cx="350" cy="50" r="1" fill="rgba(255,255,255,0.3)"/>
+            <circle cx="180" cy="45" r="1" fill="rgba(255,255,255,0.4)"/>
+            <!-- Moon -->
+            <circle cx="320" cy="60" r="20" fill="rgba(201,168,76,0.12)"/>
+            <circle cx="328" cy="52" r="17" fill="rgba(10,10,10,0.8)"/>
+          </svg>
+        </div>
+      </div>
+      <div class="about-img-badge">
+        <div class="about-badge-num">Est.</div>
+        <div class="about-badge-text">Ibadan, Oyo State</div>
+      </div>
+    </div>
+    <div class="about-text fade-right">
+      <div class="section-eyebrow">Our Story</div>
+      <div class="gold-line"></div>
+      <h2 class="section-title">Where Serenity<br/>Meets <em>Prestige</em></h2>
+      <p class="section-body">Nestled in the vibrant landscape of Ibadan, Ahlusunna Estate is more than a housing complex — it is a carefully curated world of peace, prosperity, and modern African excellence. Every road, every structure, every green space has been designed to give your family not just a home, but a sanctuary.</p>
+      <blockquote class="about-quote">"We did not build walls and roads. We built a legacy of peaceful, dignified living for every family that calls this estate home."</blockquote>
+      <p class="section-body">Located at Lane 12, Ibadan, our estate combines strategic accessibility with the tranquility of a private community — delivering a lifestyle that very few residential developments in Nigeria can match.</p>
+      <div class="about-features">
+        <div class="about-feature"><div class="about-feature-dot"></div><div class="about-feature-text">Strategically located in Ibadan</div></div>
+        <div class="about-feature"><div class="about-feature-dot"></div><div class="about-feature-text">24/7 physical & electronic security</div></div>
+        <div class="about-feature"><div class="about-feature-dot"></div><div class="about-feature-text">Lush green, serene environment</div></div>
+        <div class="about-feature"><div class="about-feature-dot"></div><div class="about-feature-text">Family-centered community values</div></div>
+        <div class="about-feature"><div class="about-feature-dot"></div><div class="about-feature-text">Modern road infrastructure</div></div>
+        <div class="about-feature"><div class="about-feature-dot"></div><div class="about-feature-text">Proven land value appreciation</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COUNTERS -->
+<section id="counters">
+  <div class="counters-grid">
+    <div class="counter-item fade-up">
+      <div><span class="counter-num" data-target="500">0</span><span class="counter-suf">+</span></div>
+      <div class="counter-label">Families Housed</div>
+      <div class="counter-line"></div>
+    </div>
+    <div class="counter-item fade-up delay-1">
+      <div><span class="counter-num" data-target="98">0</span><span class="counter-suf">%</span></div>
+      <div class="counter-label">Resident Satisfaction</div>
+      <div class="counter-line"></div>
+    </div>
+    <div class="counter-item fade-up delay-2">
+      <div><span class="counter-num" data-target="24">0</span><span class="counter-suf">/7</span></div>
+      <div class="counter-label">Estate Security</div>
+      <div class="counter-line"></div>
+    </div>
+    <div class="counter-item fade-up delay-3">
+      <div><span class="counter-num" data-target="10">0</span><span class="counter-suf">+</span></div>
+      <div class="counter-label">Years of Excellence</div>
+      <div class="counter-line"></div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY CHOOSE US -->
+<section id="why">
+  <div class="why-header fade-up">
+    <div class="section-eyebrow">Why Choose Us</div>
+    <div class="gold-line" style="margin:0 auto 1.5rem"></div>
+    <h2 class="section-title">The Ahlusunna<br/><em>Difference</em></h2>
+    <p class="section-body" style="margin-top:1rem">Six pillars of premium living that set us apart from every other residential development in Ibadan.</p>
+  </div>
+  <div class="why-grid">
+    <div class="why-card fade-up delay-1">
+      <div class="why-card-num">01</div>
+      <span class="why-card-icon">🔐</span>
+      <h3 class="why-card-title">24/7 Security</h3>
+      <p class="why-card-text">Professionally trained security personnel, electronic surveillance systems, and secure perimeter fencing ensure total peace of mind for every resident, around the clock.</p>
+    </div>
+    <div class="why-card fade-up delay-2">
+      <div class="why-card-num">02</div>
+      <span class="why-card-icon">🌿</span>
+      <h3 class="why-card-title">Serene Environment</h3>
+      <p class="why-card-text">Lush green landscapes, clean air, and beautifully maintained surroundings create an atmosphere of calm and tranquility that refreshes the spirit every single day.</p>
+    </div>
+    <div class="why-card fade-up delay-3">
+      <div class="why-card-num">03</div>
+      <span class="why-card-icon">📍</span>
+      <h3 class="why-card-title">Strategic Location</h3>
+      <p class="why-card-text">Positioned at Lane 12, Ibadan — with seamless access to major roads, commercial hubs, schools, and hospitals — your convenience is never compromised.</p>
+    </div>
+    <div class="why-card fade-up delay-1">
+      <div class="why-card-num">04</div>
+      <span class="why-card-icon">📈</span>
+      <h3 class="why-card-title">Investment Growth</h3>
+      <p class="why-card-text">Ibadan's real estate market is one of Nigeria's fastest appreciating. Properties within our estate have consistently outperformed broader market benchmarks.</p>
+    </div>
+    <div class="why-card fade-up delay-2">
+      <div class="why-card-num">05</div>
+      <span class="why-card-icon">👨‍👩‍👧‍👦</span>
+      <h3 class="why-card-title">Family Community</h3>
+      <p class="why-card-text">A warm, tightly-knit neighbourhood of professionals, entrepreneurs, and families who share values of peace, respect, and mutual progress in everyday life.</p>
+    </div>
+    <div class="why-card fade-up delay-3">
+      <div class="why-card-num">06</div>
+      <span class="why-card-icon">🏗️</span>
+      <h3 class="why-card-title">Modern Infrastructure</h3>
+      <p class="why-card-text">Premium interlocked roads, reliable water supply, drainage systems, and estate lighting — every element of our infrastructure is built to an international standard.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PROPERTIES -->
+<section id="properties">
+  <div class="properties-header">
+    <div class="fade-left">
+      <div class="section-eyebrow">Our Properties</div>
+      <div class="gold-line"></div>
+      <h2 class="section-title">Featured<br/><em>Residences</em></h2>
+    </div>
+    <a href="#contact" class="btn-outline fade-right" style="white-space:nowrap">View All Properties</a>
+  </div>
+  <div class="properties-grid">
+    <div class="prop-card fade-up delay-1">
+      <div class="prop-card-img">
+        <div class="prop-visual pv-mansion">
+          <svg viewBox="0 0 300 380" style="width:80%;opacity:.7" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="20" y="160" width="260" height="220" fill="rgba(30,20,40,0.9)" rx="2"/>
+            <rect x="20" y="155" width="260" height="12" fill="rgba(201,168,76,0.5)"/>
+            <polygon points="10,160 150,60 290,160" fill="rgba(20,15,30,0.95)"/>
+            <rect x="50" y="190" width="50" height="40" fill="rgba(201,168,76,0.18)" rx="1"/>
+            <rect x="120" y="190" width="50" height="40" fill="rgba(201,168,76,0.12)" rx="1"/>
+            <rect x="200" y="190" width="50" height="40" fill="rgba(201,168,76,0.18)" rx="1"/>
+            <rect x="50" y="250" width="50" height="40" fill="rgba(201,168,76,0.12)" rx="1"/>
+            <rect x="200" y="250" width="50" height="40" fill="rgba(201,168,76,0.12)" rx="1"/>
+            <rect x="120" y="290" width="60" height="90" fill="rgba(201,168,76,0.2)" rx="1"/>
+            <rect x="148" y="290" width="4" height="90" fill="rgba(201,168,76,0.4)"/>
+            <circle cx="60" cy="360" r="20" fill="rgba(20,60,20,0.8)"/>
+            <circle cx="240" cy="360" r="20" fill="rgba(20,60,20,0.8)"/>
+          </svg>
+          <div class="prop-visual-bg"></div>
+        </div>
+        <div class="prop-card-badge">Luxury Mansion</div>
+      </div>
+      <div class="prop-card-body">
+        <div class="prop-type">Residential · Detached</div>
+        <div class="prop-name">The Crown Residence</div>
+        <div class="prop-price">₦35,000,000 – ₦55,000,000</div>
+        <div class="prop-features">
+          <span class="prop-feature">5 Bedrooms</span>
+          <span class="prop-feature">4 Bathrooms</span>
+          <span class="prop-feature">BQ</span>
+          <span class="prop-feature">Swimming Pool</span>
+        </div>
+        <a href="#contact" class="prop-cta">Request Details</a>
+      </div>
+    </div>
+    <div class="prop-card fade-up delay-2">
+      <div class="prop-card-img">
+        <div class="prop-visual pv-duplex">
+          <svg viewBox="0 0 300 380" style="width:80%;opacity:.7" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="30" y="120" width="240" height="260" fill="rgba(40,30,15,0.9)" rx="2"/>
+            <rect x="30" y="115" width="240" height="10" fill="rgba(201,168,76,0.45)"/>
+            <line x1="30" y1="240" x2="270" y2="240" stroke="rgba(201,168,76,0.2)" stroke-width="1"/>
+            <rect x="50" y="135" width="40" height="32" fill="rgba(201,168,76,0.15)" rx="1"/>
+            <rect x="110" y="135" width="40" height="32" fill="rgba(201,168,76,0.2)" rx="1"/>
+            <rect x="170" y="135" width="40" height="32" fill="rgba(201,168,76,0.15)" rx="1"/>
+            <rect x="220" y="135" width="32" height="32" fill="rgba(201,168,76,0.1)" rx="1"/>
+            <rect x="50" y="258" width="40" height="32" fill="rgba(201,168,76,0.15)" rx="1"/>
+            <rect x="110" y="258" width="40" height="32" fill="rgba(201,168,76,0.2)" rx="1"/>
+            <rect x="170" y="258" width="40" height="32" fill="rgba(201,168,76,0.15)" rx="1"/>
+            <rect x="220" y="258" width="32" height="32" fill="rgba(201,168,76,0.1)" rx="1"/>
+            <rect x="115" y="320" width="70" height="60" fill="rgba(201,168,76,0.22)" rx="1"/>
+            <polygon points="20,120 150,40 280,120" fill="rgba(30,22,10,0.9)"/>
+          </svg>
+          <div class="prop-visual-bg"></div>
+        </div>
+        <div class="prop-card-badge">Premium Duplex</div>
+      </div>
+      <div class="prop-card-body">
+        <div class="prop-type">Residential · Semi-Detached</div>
+        <div class="prop-name">The Serenity Duplex</div>
+        <div class="prop-price">₦18,000,000 – ₦28,000,000</div>
+        <div class="prop-features">
+          <span class="prop-feature">4 Bedrooms</span>
+          <span class="prop-feature">3 Bathrooms</span>
+          <span class="prop-feature">Parking</span>
+          <span class="prop-feature">Garden</span>
+        </div>
+        <a href="#contact" class="prop-cta">Request Details</a>
+      </div>
+    </div>
+    <div class="prop-card fade-up delay-3">
+      <div class="prop-card-img">
+        <div class="prop-visual pv-interior">
+          <svg viewBox="0 0 300 380" style="width:80%;opacity:.7" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="0" y="0" width="300" height="380" fill="rgba(26,20,8,0.5)"/>
+            <!-- Interior room -->
+            <rect x="30" y="60" width="240" height="200" fill="rgba(35,28,12,0.8)" rx="1"/>
+            <!-- Floor -->
+            <rect x="30" y="220" width="240" height="40" fill="rgba(50,40,18,0.7)"/>
+            <!-- Floor tiles -->
+            <line x1="30" y1="230" x2="270" y2="230" stroke="rgba(201,168,76,0.1)" stroke-width="1"/>
+            <line x1="30" y1="240" x2="270" y2="240" stroke="rgba(201,168,76,0.1)" stroke-width="1"/>
+            <line x1="90" y1="220" x2="90" y2="260" stroke="rgba(201,168,76,0.1)" stroke-width="1"/>
+            <line x1="150" y1="220" x2="150" y2="260" stroke="rgba(201,168,76,0.1)" stroke-width="1"/>
+            <line x1="210" y1="220" x2="210" y2="260" stroke="rgba(201,168,76,0.1)" stroke-width="1"/>
+            <!-- Window -->
+            <rect x="100" y="80" width="100" height="80" fill="rgba(201,168,76,0.12)" rx="1"/>
+            <line x1="150" y1="80" x2="150" y2="160" stroke="rgba(201,168,76,0.3)" stroke-width="1"/>
+            <line x1="100" y1="120" x2="200" y2="120" stroke="rgba(201,168,76,0.3)" stroke-width="1"/>
+            <!-- Sofa shape -->
+            <rect x="50" y="170" width="120" height="50" fill="rgba(60,45,20,0.8)" rx="4"/>
+            <rect x="50" y="158" width="120" height="16" fill="rgba(70,55,25,0.9)" rx="2"/>
+            <!-- Table -->
+            <rect x="185" y="185" width="60" height="35" fill="rgba(45,35,15,0.8)" rx="2"/>
+            <!-- Lamp glow -->
+            <circle cx="240" cy="110" r="25" fill="rgba(201,168,76,0.06)"/>
+            <rect x="236" y="110" width="8" height="50" fill="rgba(201,168,76,0.15)"/>
+            <ellipse cx="240" cy="160" rx="16" ry="6" fill="rgba(201,168,76,0.1)"/>
+          </svg>
+          <div class="prop-visual-bg"></div>
+        </div>
+        <div class="prop-card-badge">Smart Bungalow</div>
+      </div>
+      <div class="prop-card-body">
+        <div class="prop-type">Residential · Detached</div>
+        <div class="prop-name">The Haven Bungalow</div>
+        <div class="prop-price">₦9,500,000 – ₦14,000,000</div>
+        <div class="prop-features">
+          <span class="prop-feature">3 Bedrooms</span>
+          <span class="prop-feature">2 Bathrooms</span>
+          <span class="prop-feature">Modern Finish</span>
+        </div>
+        <a href="#contact" class="prop-cta">Request Details</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LIFESTYLE -->
+<section id="lifestyle">
+  <div class="lifestyle-header fade-up">
+    <div class="section-eyebrow">Estate Life</div>
+    <div class="gold-line" style="margin:0 auto 1.5rem"></div>
+    <h2 class="section-title">More Than a Home.<br/><em>A Way of Life.</em></h2>
+    <p class="section-body" style="margin-top:1rem">From morning walks to evening gatherings, every moment at Ahlusunna Estate is coloured with peace, beauty, and belonging.</p>
+  </div>
+  <div class="lifestyle-mosaic">
+    <div class="life-cell fade-left">
+      <div class="life-visual life-v1" style="height:100%">
+        <svg viewBox="0 0 300 600" style="width:100%;height:100%;opacity:.5" fill="none">
+          <rect width="300" height="600" fill="rgba(10,25,10,0.5)"/>
+          <!-- Trees -->
+          <circle cx="60" cy="250" r="55" fill="rgba(25,70,25,0.7)"/>
+          <circle cx="60" cy="210" r="45" fill="rgba(30,80,30,0.8)"/>
+          <rect x="53" y="280" width="14" height="80" fill="rgba(30,20,10,0.6)"/>
+          <circle cx="230" cy="280" r="50" fill="rgba(20,60,20,0.7)"/>
+          <circle cx="230" cy="245" r="40" fill="rgba(25,70,25,0.8)"/>
+          <rect x="224" y="305" width="12" height="70" fill="rgba(30,20,10,0.6)"/>
+          <!-- Road -->
+          <rect x="110" y="350" width="80" height="250" fill="rgba(40,40,35,0.6)"/>
+          <rect x="146" y="350" width="8" height="250" fill="rgba(201,168,76,0.2)" rx="2"/>
+          <!-- Family figures -->
+          <circle cx="140" cy="400" r="12" fill="rgba(255,220,180,0.4)"/>
+          <rect x="134" y="412" width="12" height="30" fill="rgba(201,168,76,0.3)" rx="2"/>
+          <circle cx="165" cy="408" r="10" fill="rgba(255,220,180,0.35)"/>
+          <rect x="160" y="418" width="10" height="25" fill="rgba(100,150,100,0.4)" rx="2"/>
+          <!-- Street lamp -->
+          <rect x="95" y="340" width="5" height="90" fill="rgba(201,168,76,0.4)"/>
+          <ellipse cx="97" cy="340" rx="12" ry="5" fill="rgba(201,168,76,0.3)"/>
+          <circle cx="97" cy="335" r="8" fill="rgba(201,168,76,0.15)"/>
+          <!-- Night sky stars -->
+          <circle cx="50" cy="50" r="1.5" fill="rgba(255,255,255,0.5)"/>
+          <circle cx="150" cy="30" r="1" fill="rgba(255,255,255,0.4)"/>
+          <circle cx="260" cy="70" r="1.5" fill="rgba(255,255,255,0.5)"/>
+          <circle cx="180" cy="90" r="1" fill="rgba(255,255,255,0.3)"/>
+          <circle cx="80" cy="120" r="1" fill="rgba(255,255,255,0.4)"/>
+        </svg>
+        <div class="life-overlay"></div>
+        <div class="life-label">Estate Roads at Dusk</div>
+      </div>
+    </div>
+    <div class="life-cell fade-up delay-1">
+      <div class="life-visual life-v2">
+        <svg viewBox="0 0 250 260" style="width:100%;height:100%;opacity:.6" fill="none">
+          <rect width="250" height="260" fill="rgba(25,20,5,0.5)"/>
+          <circle cx="70" cy="140" r="40" fill="rgba(30,75,30,0.8)"/>
+          <circle cx="70" cy="115" r="33" fill="rgba(35,85,35,0.9)"/>
+          <rect x="64" y="162" width="12" height="50" fill="rgba(35,22,8,0.7)"/>
+          <circle cx="180" cy="150" r="35" fill="rgba(25,70,25,0.7)"/>
+          <circle cx="180" cy="128" r="28" fill="rgba(30,80,30,0.85)"/>
+          <rect x="175" y="168" width="10" height="42" fill="rgba(35,22,8,0.7)"/>
+          <rect x="0" y="210" width="250" height="50" fill="rgba(20,30,15,0.6)"/>
+          <!-- children playing -->
+          <circle cx="120" cy="195" r="8" fill="rgba(255,220,180,0.5)"/>
+          <rect x="116" y="203" width="8" height="20" fill="rgba(201,168,76,0.35)" rx="2"/>
+        </svg>
+        <div class="life-overlay"></div>
+        <div class="life-label">Green Spaces</div>
+      </div>
+    </div>
+    <div class="life-cell fade-up delay-2">
+      <div class="life-visual life-v3">
+        <svg viewBox="0 0 250 260" style="width:100%;height:100%;opacity:.6" fill="none">
+          <rect width="250" height="260" fill="rgba(5,10,25,0.5)"/>
+          <rect x="30" y="40" width="190" height="160" fill="rgba(15,20,45,0.8)" rx="2"/>
+          <rect x="30" y="35" width="190" height="8" fill="rgba(201,168,76,0.4)"/>
+          <rect x="50" y="60" width="35" height="28" fill="rgba(201,168,76,0.18)" rx="1"/>
+          <rect x="105" y="60" width="35" height="28" fill="rgba(201,168,76,0.25)" rx="1"/>
+          <rect x="160" y="60" width="35" height="28" fill="rgba(201,168,76,0.12)" rx="1"/>
+          <rect x="50" y="105" width="35" height="28" fill="rgba(201,168,76,0.2)" rx="1"/>
+          <rect x="105" y="105" width="35" height="28" fill="rgba(201,168,76,0.15)" rx="1"/>
+          <rect x="160" y="105" width="35" height="28" fill="rgba(201,168,76,0.22)" rx="1"/>
+          <rect x="100" y="155" width="50" height="45" fill="rgba(201,168,76,0.2)" rx="1"/>
+          <polygon points="20,40 125,0 230,40" fill="rgba(10,14,30,0.9)"/>
+          <circle cx="200" cy="30" r="15" fill="rgba(201,168,76,0.08)"/>
+          <circle cx="207" cy="25" r="12" fill="rgba(5,10,25,0.9)"/>
+        </svg>
+        <div class="life-overlay"></div>
+        <div class="life-label">Night Lighting</div>
+      </div>
+    </div>
+    <div class="life-cell fade-up delay-1">
+      <div class="life-visual life-v4">
+        <svg viewBox="0 0 250 260" style="width:100%;height:100%;opacity:.6" fill="none">
+          <rect width="250" height="260" fill="rgba(25,8,5,0.4)"/>
+          <!-- Mosque/Islamic architectural element suggestion -->
+          <rect x="75" y="80" width="100" height="140" fill="rgba(40,20,15,0.8)" rx="2"/>
+          <path d="M75,80 Q125,30 175,80" fill="rgba(35,18,12,0.9)"/>
+          <rect x="108" y="30" width="8" height="55" fill="rgba(201,168,76,0.5)"/>
+          <circle cx="112" cy="25" r="8" fill="rgba(201,168,76,0.4)"/>
+          <rect x="90" y="100" width="25" height="35" fill="rgba(201,168,76,0.15)" rx="1"/>
+          <rect x="135" y="100" width="25" height="35" fill="rgba(201,168,76,0.15)" rx="1"/>
+          <rect x="103" y="165" width="44" height="55" fill="rgba(201,168,76,0.2)" rx="1"/>
+          <rect x="30" y="80" width="30" height="100" fill="rgba(35,18,12,0.7)" rx="1"/>
+          <rect x="190" y="80" width="30" height="100" fill="rgba(35,18,12,0.7)" rx="1"/>
+        </svg>
+        <div class="life-overlay"></div>
+        <div class="life-label">Community Structures</div>
+      </div>
+    </div>
+    <div class="life-cell fade-right">
+      <div class="life-visual life-v5">
+        <svg viewBox="0 0 250 260" style="width:100%;height:100%;opacity:.5" fill="none">
+          <rect width="250" height="260" fill="rgba(10,10,10,0.5)"/>
+          <!-- Gate visual -->
+          <rect x="30" y="80" width="25" height="150" fill="rgba(201,168,76,0.3)"/>
+          <rect x="195" y="80" width="25" height="150" fill="rgba(201,168,76,0.3)"/>
+          <rect x="30" y="75" width="25" height="12" fill="rgba(201,168,76,0.5)"/>
+          <rect x="195" y="75" width="25" height="12" fill="rgba(201,168,76,0.5)"/>
+          <!-- Gate bars -->
+          <rect x="55" y="100" width="6" height="110" fill="rgba(180,140,50,0.4)"/>
+          <rect x="75" y="100" width="6" height="110" fill="rgba(180,140,50,0.4)"/>
+          <rect x="95" y="100" width="6" height="110" fill="rgba(180,140,50,0.4)"/>
+          <rect x="115" y="100" width="6" height="110" fill="rgba(180,140,50,0.4)"/>
+          <rect x="135" y="100" width="6" height="110" fill="rgba(180,140,50,0.4)"/>
+          <rect x="155" y="100" width="6" height="110" fill="rgba(180,140,50,0.4)"/>
+          <rect x="175" y="100" width="6" height="110" fill="rgba(180,140,50,0.4)"/>
+          <rect x="55" y="145" width="140" height="5" fill="rgba(201,168,76,0.3)"/>
+          <!-- Estate sign -->
+          <rect x="85" y="55" width="80" height="25" fill="rgba(201,168,76,0.2)"/>
+          <text x="125" y="72" text-anchor="middle" fill="rgba(201,168,76,0.7)" font-size="8" letter-spacing="1" font-family="serif">AHLUSUNNA</text>
+          <!-- Road -->
+          <rect x="85" y="210" width="80" height="50" fill="rgba(40,40,35,0.5)"/>
+        </svg>
+        <div class="life-overlay"></div>
+        <div class="life-label">Estate Gates</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials">
+  <div class="testi-header fade-up">
+    <div class="section-eyebrow">Resident Voices</div>
+    <div class="gold-line" style="margin:0 auto 1.5rem"></div>
+    <h2 class="section-title">What Our Residents<br/><em>Are Saying</em></h2>
+  </div>
+  <div class="testi-slider" id="testiSlider">
+    <div class="testi-track" id="testiTrack">
+      <div class="testi-card">
+        <div class="testi-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+        <p class="testi-text">"Quiet, peaceful, and ideal for family living. Moving to Ahlusunna Estate was one of the best decisions my family ever made. The environment is calm, clean, and truly feels like home."</p>
+        <div class="testi-author">
+          <div class="testi-avatar">AK</div>
+          <div><div class="testi-name">Alhaji Kazeem O.</div><div class="testi-role">Resident · Ibadan</div></div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+        <p class="testi-text">"One of the most serene residential environments around Ibadan. The security is excellent and the infrastructure is well-maintained. I sleep with total peace of mind every night."</p>
+        <div class="testi-author">
+          <div class="testi-avatar">FT</div>
+          <div><div class="testi-name">Fatimah Tunde-Ali</div><div class="testi-role">Homeowner · Oyo State</div></div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+        <p class="testi-text">"As an investor, the land value appreciation here has exceeded my expectations. This is one of the smartest real estate investments available in Ibadan today."</p>
+        <div class="testi-author">
+          <div class="testi-avatar">BA</div>
+          <div><div class="testi-name">Bayo Adewale</div><div class="testi-role">Property Investor</div></div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+        <p class="testi-text">"A calm environment far from city stress. My children love playing in the clean, green spaces here. The community is warm and the management is responsive and professional."</p>
+        <div class="testi-author">
+          <div class="testi-avatar">MR</div>
+          <div><div class="testi-name">Moriam Rasheed</div><div class="testi-role">Resident · 3 Years</div></div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+        <p class="testi-text">"Excellent long-term investment potential. The roads are well paved, lighting is consistent, and the overall ambiance of the estate gives you a sense of premium living at every turn."</p>
+        <div class="testi-author">
+          <div class="testi-avatar">SO</div>
+          <div><div class="testi-name">Samuel Okafor</div><div class="testi-role">Real Estate Professional</div></div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+        <p class="testi-text">"We visited many estates in Ibadan before choosing Ahlusunna. Nothing compared in terms of peace, infrastructure, and genuine community spirit. We have never looked back."</p>
+        <div class="testi-author">
+          <div class="testi-avatar">HY</div>
+          <div><div class="testi-name">Hadiza Yusuf</div><div class="testi-role">Family Homeowner</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="testi-controls">
+    <button class="testi-btn" id="testiPrev">←</button>
+    <button class="testi-btn" id="testiNext">→</button>
+  </div>
+</section>
+
+<!-- INVESTMENT -->
+<section id="investment">
+  <div class="invest-grid">
+    <div class="invest-text fade-left">
+      <div class="section-eyebrow">Investment Opportunity</div>
+      <div class="gold-line"></div>
+      <h2 class="section-title">Build Wealth.<br/><em>Secure Legacy.</em></h2>
+      <p class="section-body">Ibadan's real estate market is experiencing one of the most significant growth periods in its history. As Nigeria's third largest city continues to expand economically and infrastructurally, property values in premium locations like Ahlusunna Estate appreciate at rates that consistently outperform traditional investment vehicles.</p>
+      <p class="section-body" style="margin-top:1rem">Now is not just a good time to invest in Ibadan real estate — it is the defining moment that will separate tomorrow's wealth from today's hesitation.</p>
+      <div class="invest-bars">
+        <div class="invest-bar">
+          <div class="invest-bar-header"><span class="invest-bar-label">Land Value Appreciation (5yr)</span><span class="invest-bar-val">+240%</span></div>
+          <div class="invest-bar-track"><div class="invest-bar-fill" data-width="82"></div></div>
+        </div>
+        <div class="invest-bar">
+          <div class="invest-bar-header"><span class="invest-bar-label">Rental Yield Potential</span><span class="invest-bar-val">12–18% p.a.</span></div>
+          <div class="invest-bar-track"><div class="invest-bar-fill" data-width="68"></div></div>
+        </div>
+        <div class="invest-bar">
+          <div class="invest-bar-header"><span class="invest-bar-label">Resident Retention Rate</span><span class="invest-bar-val">94%</span></div>
+          <div class="invest-bar-track"><div class="invest-bar-fill" data-width="94"></div></div>
+        </div>
+        <div class="invest-bar">
+          <div class="invest-bar-header"><span class="invest-bar-label">Infrastructure Quality Score</span><span class="invest-bar-val">A+</span></div>
+          <div class="invest-bar-track"><div class="invest-bar-fill" data-width="96"></div></div>
+        </div>
+      </div>
+    </div>
+    <div class="invest-highlights fade-right">
+      <div class="invest-highlight">
+        <div class="invest-h-icon">🏘️</div>
+        <div class="invest-h-title">Secure Ownership</div>
+        <div class="invest-h-text">Clear title, documented ownership, and transparent transaction processes you can trust absolutely.</div>
+      </div>
+      <div class="invest-highlight">
+        <div class="invest-h-icon">📊</div>
+        <div class="invest-h-title">Market Growth</div>
+        <div class="invest-h-text">Ibadan's expanding economy and infrastructure drive consistent, measurable property value growth.</div>
+      </div>
+      <div class="invest-highlight">
+        <div class="invest-h-icon">🌍</div>
+        <div class="invest-h-title">Diaspora Friendly</div>
+        <div class="invest-h-text">Convenient remote purchase and management options for Nigerians investing from abroad.</div>
+      </div>
+      <div class="invest-highlight">
+        <div class="invest-h-icon">💰</div>
+        <div class="invest-h-title">Flexible Payment</div>
+        <div class="invest-h-text">Structured instalment plans that make owning your Ahlusunna property more accessible than ever.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MORTGAGE CALCULATOR -->
+<section id="mortgage">
+  <div class="mortgage-inner">
+    <div class="mortgage-header fade-up">
+      <div class="section-eyebrow">Financial Planning</div>
+      <div class="gold-line" style="margin:0 auto 1.5rem"></div>
+      <h2 class="section-title">Payment<br/><em>Calculator</em></h2>
+      <p class="section-body" style="margin-top:1rem;max-width:500px;margin-left:auto;margin-right:auto">Estimate your monthly instalment commitment and plan your investment with confidence.</p>
+    </div>
+    <div class="mortgage-card fade-up delay-1">
+      <div class="mortgage-grid">
+        <div>
+          <div class="form-group">
+            <label class="form-label">Property Price (₦)</label>
+            <input type="number" class="form-input" id="propPrice" value="18000000" min="1000000" max="100000000" step="500000" oninput="calcMortgage()"/>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Initial Deposit (%): <span id="dpPct">20</span>%</label>
+            <input type="range" class="form-input" id="dpRange" min="10" max="60" value="20" oninput="calcMortgage()"/>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Payment Period (Months): <span id="tenurePct">24</span></label>
+            <input type="range" class="form-input" id="tenureRange" min="6" max="60" value="24" oninput="calcMortgage()"/>
+          </div>
+        </div>
+        <div>
+          <div class="form-group">
+            <label class="form-label">Loan Amount (₦)</label>
+            <input type="text" class="form-input" id="loanAmt" readonly/>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Initial Deposit (₦)</label>
+            <input type="text" class="form-input" id="depositAmt" readonly/>
+          </div>
+          <div class="mortgage-result">
+            <div class="mortgage-result-label">Estimated Monthly Payment</div>
+            <div class="mortgage-result-amount" id="monthlyPmt">₦625,000</div>
+            <div class="mortgage-result-note">Subject to terms · Contact us for exact figures</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section id="gallery">
+  <div class="gallery-header fade-up">
+    <div class="section-eyebrow">Visual Gallery</div>
+    <div class="gold-line" style="margin:0 auto 1.5rem"></div>
+    <h2 class="section-title">A Glimpse of<br/><em>Estate Life</em></h2>
+  </div>
+  <div class="gallery-grid" style="max-width:1200px;margin:0 auto">
+    <div class="gal-item fade-up delay-1">
+      <div class="gal-visual gal-v1" style="height:460px">
+        <svg viewBox="0 0 400 460" style="width:100%;height:100%;opacity:.6" fill="none">
+          <rect width="400" height="460" fill="rgba(10,25,10,0.4)"/>
+          <!-- Aerial estate view suggestion -->
+          <rect x="0" y="380" width="400" height="80" fill="rgba(20,35,15,0.6)"/>
+          <rect x="40" y="200" width="80" height="180" fill="rgba(20,30,15,0.8)" rx="1"/>
+          <rect x="160" y="220" width="80" height="160" fill="rgba(15,25,12,0.8)" rx="1"/>
+          <rect x="280" y="190" width="80" height="190" fill="rgba(20,30,15,0.8)" rx="1"/>
+          <rect x="0" y="370" width="400" height="12" fill="rgba(40,40,35,0.7)"/>
+          <rect x="40" y="195" width="80" height="8" fill="rgba(201,168,76,0.4)"/>
+          <rect x="160" y="215" width="80" height="8" fill="rgba(201,168,76,0.4)"/>
+          <rect x="280" y="185" width="80" height="8" fill="rgba(201,168,76,0.4)"/>
+          <circle cx="90" cy="310" r="25" fill="rgba(25,70,25,0.8)"/>
+          <circle cx="200" cy="340" r="20" fill="rgba(25,70,25,0.7)"/>
+          <circle cx="320" cy="320" r="22" fill="rgba(25,70,25,0.8)"/>
+          <text x="200" y="90" text-anchor="middle" fill="rgba(201,168,76,0.2)" font-size="14" letter-spacing="4" font-family="serif">AERIAL VIEW</text>
+        </svg>
+        <div class="gal-overlay"><div class="gal-zoom">⊕</div></div>
+      </div>
+    </div>
+    <div class="gal-item fade-up delay-2">
+      <div class="gal-visual gal-v2">
+        <svg viewBox="0 0 200 220" style="width:100%;height:100%;opacity:.6" fill="none">
+          <rect width="200" height="220" fill="rgba(25,20,5,0.4)"/>
+          <rect x="0" y="180" width="200" height="40" fill="rgba(40,40,35,0.5)"/>
+          <rect x="90" y="165" width="20" height="55" fill="rgba(40,40,35,0.5)"/>
+          <rect x="30" y="60" width="60" height="120" fill="rgba(40,30,12,0.8)" rx="1"/>
+          <rect x="30" y="55" width="60" height="8" fill="rgba(201,168,76,0.4)"/>
+          <rect x="110" y="80" width="60" height="100" fill="rgba(35,25,10,0.8)" rx="1"/>
+          <rect x="110" y="75" width="60" height="8" fill="rgba(201,168,76,0.4)"/>
+          <rect x="38" y="75" width="20" height="18" fill="rgba(201,168,76,0.18)" rx="1"/>
+          <rect x="65" y="75" width="18" height="18" fill="rgba(201,168,76,0.14)" rx="1"/>
+        </svg>
+        <div class="gal-overlay"><div class="gal-zoom">⊕</div></div>
+      </div>
+    </div>
+    <div class="gal-item fade-up delay-3">
+      <div class="gal-visual gal-v3">
+        <svg viewBox="0 0 200 220" style="width:100%;height:100%;opacity:.6" fill="none">
+          <rect width="200" height="220" fill="rgba(8,8,25,0.4)"/>
+          <rect x="20" y="50" width="160" height="130" fill="rgba(15,15,40,0.8)" rx="1"/>
+          <rect x="20" y="45" width="160" height="8" fill="rgba(201,168,76,0.4)"/>
+          <rect x="35" y="65" width="30" height="25" fill="rgba(201,168,76,0.2)" rx="1"/>
+          <rect x="80" y="65" width="30" height="25" fill="rgba(201,168,76,0.15)" rx="1"/>
+          <rect x="125" y="65" width="30" height="25" fill="rgba(201,168,76,0.2)" rx="1"/>
+          <rect x="35" y="105" width="30" height="25" fill="rgba(201,168,76,0.12)" rx="1"/>
+          <rect x="80" y="105" width="30" height="25" fill="rgba(201,168,76,0.2)" rx="1"/>
+          <rect x="125" y="105" width="30" height="25" fill="rgba(201,168,76,0.12)" rx="1"/>
+          <polygon points="10,50 100,10 190,50" fill="rgba(10,10,30,0.9)"/>
+        </svg>
+        <div class="gal-overlay"><div class="gal-zoom">⊕</div></div>
+      </div>
+    </div>
+    <div class="gal-item fade-up delay-1">
+      <div class="gal-visual gal-v4">
+        <svg viewBox="0 0 200 220" style="width:100%;height:100%;opacity:.6" fill="none">
+          <rect width="200" height="220" fill="rgba(25,8,8,0.4)"/>
+          <circle cx="60" cy="120" r="45" fill="rgba(30,75,30,0.7)"/>
+          <circle cx="60" cy="95" r="38" fill="rgba(35,85,35,0.85)"/>
+          <rect x="54" y="148" width="12" height="50" fill="rgba(35,22,8,0.7)"/>
+          <circle cx="145" cy="135" r="35" fill="rgba(25,70,25,0.7)"/>
+          <circle cx="145" cy="113" r="28" fill="rgba(30,80,30,0.85)"/>
+          <rect x="140" y="155" width="10" height="40" fill="rgba(35,22,8,0.7)"/>
+          <rect x="0" y="190" width="200" height="30" fill="rgba(20,35,15,0.6)"/>
+          <rect x="30" y="185" width="4" height="60" fill="rgba(201,168,76,0.3)"/>
+          <ellipse cx="32" cy="183" rx="10" ry="4" fill="rgba(201,168,76,0.25)"/>
+        </svg>
+        <div class="gal-overlay"><div class="gal-zoom">⊕</div></div>
+      </div>
+    </div>
+    <div class="gal-item fade-up delay-2">
+      <div class="gal-visual gal-v5">
+        <svg viewBox="0 0 400 220" style="width:100%;height:100%;opacity:.6" fill="none">
+          <rect width="400" height="220" fill="rgba(10,25,18,0.4)"/>
+          <rect x="0" y="180" width="400" height="40" fill="rgba(40,40,35,0.6)"/>
+          <rect x="180" y="165" width="40" height="55" fill="rgba(40,40,35,0.5)"/>
+          <rect x="190" y="158" width="8" height="40" fill="rgba(201,168,76,0.35)" rx="2"/>
+          <!-- Gate -->
+          <rect x="10" y="80" width="20" height="110" fill="rgba(201,168,76,0.3)"/>
+          <rect x="370" y="80" width="20" height="110" fill="rgba(201,168,76,0.3)"/>
+          <rect x="30" y="95" width="5" height="80" fill="rgba(180,140,50,0.35)"/>
+          <rect x="50" y="95" width="5" height="80" fill="rgba(180,140,50,0.35)"/>
+          <rect x="70" y="95" width="5" height="80" fill="rgba(180,140,50,0.35)"/>
+          <rect x="320" y="95" width="5" height="80" fill="rgba(180,140,50,0.35)"/>
+          <rect x="340" y="95" width="5" height="80" fill="rgba(180,140,50,0.35)"/>
+          <rect x="360" y="95" width="5" height="80" fill="rgba(180,140,50,0.35)"/>
+          <text x="200" y="65" text-anchor="middle" fill="rgba(201,168,76,0.5)" font-size="11" letter-spacing="3" font-family="serif">AHLUSUNNA ESTATE</text>
+        </svg>
+        <div class="gal-overlay"><div class="gal-zoom">⊕</div></div>
+      </div>
+    </div>
+    <div class="gal-item fade-up delay-3">
+      <div class="gal-visual gal-v6">
+        <svg viewBox="0 0 200 220" style="width:100%;height:100%;opacity:.6" fill="none">
+          <rect width="200" height="220" fill="rgba(25,25,8,0.4)"/>
+          <rect x="20" y="40" width="160" height="140" fill="rgba(35,28,10,0.8)" rx="1"/>
+          <rect x="20" y="35" width="160" height="8" fill="rgba(201,168,76,0.4)"/>
+          <rect x="35" y="58" width="35" height="30" fill="rgba(201,168,76,0.18)" rx="1"/>
+          <rect x="85" y="58" width="35" height="30" fill="rgba(201,168,76,0.14)" rx="1"/>
+          <rect x="130" y="58" width="32" height="30" fill="rgba(201,168,76,0.18)" rx="1"/>
+          <rect x="35" y="100" width="35" height="30" fill="rgba(201,168,76,0.12)" rx="1"/>
+          <rect x="85" y="100" width="35" height="30" fill="rgba(201,168,76,0.18)" rx="1"/>
+          <rect x="130" y="100" width="32" height="30" fill="rgba(201,168,76,0.12)" rx="1"/>
+          <rect x="80" y="145" width="40" height="35" fill="rgba(201,168,76,0.2)" rx="1"/>
+          <polygon points="10,40 100,5 190,40" fill="rgba(25,20,8,0.9)"/>
+        </svg>
+        <div class="gal-overlay"><div class="gal-zoom">⊕</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ESTATE MAP -->
+<section id="estate-map">
+  <div class="map-inner">
+    <div class="map-header fade-up">
+      <div class="section-eyebrow">Estate Layout</div>
+      <div class="gold-line" style="margin:0 auto 1.5rem"></div>
+      <h2 class="section-title">Find Your Place<br/>Within <em>The Estate</em></h2>
+    </div>
+    <div class="animated-map fade-up delay-1" id="animMap">
+      <div class="map-grid-lines"></div>
+      <!-- Horizontal roads -->
+      <div class="map-road h" style="top:30%;left:8%;width:84%;animation:roadReveal 1.5s ease 3s forwards"></div>
+      <div class="map-road h" style="top:55%;left:8%;width:84%"></div>
+      <div class="map-road h" style="top:75%;left:8%;width:84%"></div>
+      <!-- Vertical roads -->
+      <div class="map-road v" style="left:25%;top:15%;height:70%"></div>
+      <div class="map-road v" style="left:50%;top:15%;height:70%"></div>
+      <div class="map-road v" style="left:75%;top:15%;height:70%"></div>
+      <!-- Nodes -->
+      <div class="map-node main" style="top:30%;left:50%"><div class="map-pulse"></div></div>
+      <div class="map-node" style="top:55%;left:25%;animation-delay:.5s"></div>
+      <div class="map-node" style="top:55%;left:75%;animation-delay:1s"></div>
+      <div class="map-node" style="top:75%;left:50%;animation-delay:1.5s"></div>
+      <div class="map-node" style="top:30%;left:25%;animation-delay:.8s"></div>
+      <div class="map-node" style="top:30%;left:75%;animation-delay:.3s"></div>
+      <!-- Labels -->
+      <div class="map-label" style="top:24%;left:44%">Main Entrance</div>
+      <div class="map-label" style="top:57%;left:17%">Phase 1</div>
+      <div class="map-label" style="top:57%;left:77%">Phase 2</div>
+      <div class="map-label" style="top:77%;left:44%">Amenities</div>
+      <div class="map-label" style="top:10%;left:44%;font-size:.6rem;color:rgba(201,168,76,.5)">Lane 12, Ibadan — Oyo State</div>
+    </div>
+    <div class="map-legend">
+      <div class="map-legend-item"><div class="map-legend-dot"></div>Key Node / Gate</div>
+      <div class="map-legend-item"><div class="map-legend-dot" style="background:rgba(201,168,76,.3);width:20px;height:2px;border-radius:0"></div>Estate Roads</div>
+      <div class="map-legend-item"><div class="map-legend-dot" style="border:1px solid var(--gold);background:transparent;width:10px;height:10px"></div>Estate Grid</div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-grid">
+    <div class="contact-info fade-left">
+      <div class="section-eyebrow">Get In Touch</div>
+      <div class="gold-line"></div>
+      <h2 class="section-title">Begin Your<br/><em>Journey Home</em></h2>
+      <p class="section-body" style="margin-bottom:2rem">Our team is available daily to guide you through property selection, inspection scheduling, and investment planning. Take the first step today.</p>
+      <div class="contact-detail">
+        <div class="contact-detail-icon">📍</div>
+        <div>
+          <div class="contact-detail-label">Location</div>
+          <div class="contact-detail-text">Lane 12, Ibadan 110115,<br/>Oyo State, Nigeria</div>
+        </div>
+      </div>
+      <div class="contact-detail">
+        <div class="contact-detail-icon">📞</div>
+        <div>
+          <div class="contact-detail-label">Phone</div>
+          <div class="contact-detail-text">0806 675 6533</div>
+        </div>
+      </div>
+      <div class="contact-detail">
+        <div class="contact-detail-icon">🕐</div>
+        <div>
+          <div class="contact-detail-label">Hours</div>
+          <div class="contact-detail-text">Open Daily — 8:00 AM to 6:00 PM</div>
+        </div>
+      </div>
+      <div class="contact-btns">
+        <a href="tel:08066756533" class="btn-call">📞 Call Us Now</a>
+        <a href="https://wa.me/2348066756533?text=Hello%2C%20I'm%20interested%20in%20Ahlusunna%20Estate%2C%20Ibadan.%20Please%20send%20me%20more%20information." class="btn-whatsapp" target="_blank">💬 WhatsApp</a>
+      </div>
+      <div class="map-embed" style="margin-top:2rem">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3956.4!2d3.90!3d7.38!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zN8KwMjInNTYuOCJOIDPCsDU0JzAwLjAiRQ!5e0!3m2!1sen!2sng!4v1" width="100%" height="200" style="border:0;opacity:.7;filter:grayscale(1) invert(1)" allowfullscreen="" loading="lazy"></iframe>
+      </div>
+    </div>
+    <div class="contact-form fade-right">
+      <h3 style="font-family:var(--font-serif);font-size:1.6rem;font-weight:300;margin-bottom:2rem;color:var(--white)">Book an <em style="color:var(--gold)">Inspection</em></h3>
+      <div class="form-group"><label class="form-label">Full Name</label><input type="text" class="form-input" placeholder="Your Full Name"/></div>
+      <div class="form-group"><label class="form-label">Phone Number</label><input type="tel" class="form-input" placeholder="08XXXXXXXXXX"/></div>
+      <div class="form-group"><label class="form-label">Email Address</label><input type="email" class="form-input" placeholder="your@email.com"/></div>
+      <div class="form-group"><label class="form-label">Property Interest</label>
+        <select class="form-input" style="background:rgba(255,255,255,.04);color:var(--white);option-background:var(--black)">
+          <option style="background:#111">Select Property Type</option>
+          <option style="background:#111">Luxury Mansion</option>
+          <option style="background:#111">Premium Duplex</option>
+          <option style="background:#111">Smart Bungalow</option>
+          <option style="background:#111">Land / Plot</option>
+          <option style="background:#111">Investment Portfolio</option>
+        </select>
+      </div>
+      <div class="form-group"><label class="form-label">Preferred Inspection Date</label><input type="date" class="form-input"/></div>
+      <div class="form-group"><label class="form-label">Message (Optional)</label><textarea class="form-input" rows="4" placeholder="Tell us more about your needs..." style="resize:vertical"></textarea></div>
+      <button class="btn-primary" style="width:100%;display:block;border:none;cursor:pointer;font-family:var(--font-sans);font-size:.65rem;padding:1rem" onclick="handleInspection()">Submit Inspection Request</button>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div>
+      <div class="footer-brand-name">Ahlusunna Estate</div>
+      <div class="footer-brand-sub">Ibadan · Oyo State · Nigeria</div>
+      <p class="footer-brand-desc">A premium residential estate crafted for comfort, security, and timeless value. Where modern African luxury meets peaceful family living.</p>
+    </div>
+    <div>
+      <div class="footer-col-title">Navigate</div>
+      <ul class="footer-links">
+        <li><a href="#about">About Estate</a></li>
+        <li><a href="#why">Why Choose Us</a></li>
+        <li><a href="#properties">Properties</a></li>
+        <li><a href="#lifestyle">Lifestyle</a></li>
+        <li><a href="#investment">Investment</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Properties</div>
+      <ul class="footer-links">
+        <li><a href="#properties">Luxury Mansions</a></li>
+        <li><a href="#properties">Premium Duplexes</a></li>
+        <li><a href="#properties">Smart Bungalows</a></li>
+        <li><a href="#properties">Plots of Land</a></li>
+        <li><a href="#contact">Investment Plans</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Contact</div>
+      <ul class="footer-links">
+        <li><a href="tel:08066756533">0806 675 6533</a></li>
+        <li><a href="#contact">Book Inspection</a></li>
+        <li><a href="https://wa.me/2348066756533" target="_blank">WhatsApp Us</a></li>
+        <li><a href="#estate-map">Get Directions</a></li>
+        <li><a href="#contact">Send Enquiry</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-copy">© 2025 Ahlusunna Estate, Ibadan. Lane 12, Ibadan 110115, Oyo State, Nigeria. All Rights Reserved.</div>
+    <div class="footer-social">
+      <a href="#" title="Facebook">f</a>
+      <a href="#" title="Instagram">in</a>
+      <a href="https://wa.me/2348066756533" target="_blank" title="WhatsApp">w</a>
+      <a href="#" title="Twitter">𝕏</a>
+    </div>
+  </div>
+</footer>
+
+<!-- FLOATING WHATSAPP -->
+<div class="floating-whatsapp">
+  <div class="wa-tooltip">Chat with us on WhatsApp</div>
+  <a href="https://wa.me/2348066756533?text=Hello%2C%20I'm%20interested%20in%20Ahlusunna%20Estate%2C%20Ibadan.%20Please%20send%20me%20more%20information." class="wa-bubble" target="_blank" title="WhatsApp">💬</a>
+</div>
+
+<!-- AI CHATBOT TOGGLE -->
+<div class="chat-toggle" id="chatToggle">
+  <button class="chat-toggle-btn" id="chatToggleBtn" onclick="toggleChat()" title="AI Assistant">🤖</button>
+</div>
+
+<!-- AI CHATBOT WIDGET -->
+<div id="chatbot-widget">
+  <div class="chatbot-box">
+    <div class="chatbot-header">
+      <span class="chatbot-title">🤖 Estate AI Assistant</span>
+      <button class="chatbot-close" onclick="toggleChat()">✕</button>
+    </div>
+    <div class="chatbot-body" id="chatBody">
+      <div class="chat-msg bot">Hello! I'm your Ahlusunna Estate assistant. Ask me anything about our properties, pricing, location, or how to book an inspection.</div>
+    </div>
+    <div class="chatbot-input">
+      <input type="text" id="chatInput" placeholder="Ask about our properties..." onkeydown="if(event.key==='Enter')sendChat()"/>
+      <button onclick="sendChat()">→</button>
+    </div>
+  </div>
+</div>
+
+<!-- SCRIPTS -->
+<script>
+// ============ LOADER ============
+window.addEventListener('load', () => {
+  setTimeout(() => {
+    document.getElementById('loader').classList.add('hidden');
+    document.getElementById('chatToggle').classList.add('visible');
+  }, 2400);
+});
+
+// ============ CUSTOM CURSOR ============
+const dot = document.getElementById('cursorDot');
+const ring = document.getElementById('cursorRing');
+document.addEventListener('mousemove', e => {
+  dot.style.left = e.clientX + 'px';
+  dot.style.top = e.clientY + 'px';
+  ring.style.left = e.clientX + 'px';
+  ring.style.top = e.clientY + 'px';
+});
+document.querySelectorAll('a,button,.why-card,.prop-card,.testi-btn,.invest-highlight,.gal-item').forEach(el => {
+  el.addEventListener('mouseenter', () => ring.classList.add('expanded'));
+  el.addEventListener('mouseleave', () => ring.classList.remove('expanded'));
+});
+
+// ============ SCROLL PROGRESS ============
+window.addEventListener('scroll', () => {
+  const scrollTop = window.scrollY;
+  const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+  const progress = (scrollTop / docHeight) * 100;
+  document.getElementById('progress-bar').style.width = progress + '%';
+  // Nav scrolled state
+  const nav = document.getElementById('navbar');
+  if (scrollTop > 80) nav.classList.add('scrolled');
+  else nav.classList.remove('scrolled');
+});
+
+// ============ MOBILE NAV ============
+document.getElementById('mobileClose').addEventListener('click', closeMobile);
+function closeMobile() { document.getElementById('mobileNav').classList.remove('open'); }
+
+// ============ SCROLL REVEAL ============
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.12 });
+document.querySelectorAll('.fade-up,.fade-left,.fade-right').forEach(el => observer.observe(el));
+
+// ============ ANIMATED COUNTERS ============
+const counters = document.querySelectorAll('.counter-num');
+const counterObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting && !entry.target.dataset.done) {
+      entry.target.dataset.done = '1';
+      const target = parseInt(entry.target.dataset.target);
+      const duration = 2000;
+      const step = target / (duration / 16);
+      let current = 0;
+      const timer = setInterval(() => {
+        current = Math.min(current + step, target);
+        entry.target.textContent = Math.floor(current);
+        if (current >= target) clearInterval(timer);
+      }, 16);
+    }
+  });
+}, { threshold: 0.5 });
+counters.forEach(c => counterObserver.observe(c));
+
+// ============ INVESTMENT BARS ============
+const bars = document.querySelectorAll('.invest-bar-fill');
+const barObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.style.width = entry.target.dataset.width + '%';
+    }
+  });
+}, { threshold: 0.3 });
+bars.forEach(b => barObserver.observe(b));
+
+// ============ TESTIMONIAL SLIDER ============
+let testiIndex = 0;
+const track = document.getElementById('testiTrack');
+const cards = document.querySelectorAll('.testi-card');
+function getVisible() { return window.innerWidth <= 768 ? 1 : window.innerWidth <= 1024 ? 2 : 3; }
+function updateSlider() {
+  const cardW = cards[0].offsetWidth + 24;
+  track.style.transform = `translateX(-${testiIndex * cardW}px)`;
+}
+document.getElementById('testiNext').addEventListener('click', () => {
+  const max = cards.length - getVisible();
+  testiIndex = Math.min(testiIndex + 1, max);
+  updateSlider();
+});
+document.getElementById('testiPrev').addEventListener('click', () => {
+  testiIndex = Math.max(testiIndex - 1, 0);
+  updateSlider();
+});
+// Auto-advance
+setInterval(() => {
+  const max = cards.length - getVisible();
+  testiIndex = testiIndex >= max ? 0 : testiIndex + 1;
+  updateSlider();
+}, 5000);
+window.addEventListener('resize', updateSlider);
+
+// ============ MORTGAGE CALCULATOR ============
+function calcMortgage() {
+  const price = parseInt(document.getElementById('propPrice').value) || 0;
+  const dpPct = parseInt(document.getElementById('dpRange').value);
+  const tenure = parseInt(document.getElementById('tenureRange').value);
+  document.getElementById('dpPct').textContent = dpPct;
+  document.getElementById('tenurePct').textContent = tenure;
+  const deposit = price * dpPct / 100;
+  const loan = price - deposit;
+  const monthly = tenure > 0 ? loan / tenure : 0;
+  document.getElementById('depositAmt').value = '₦' + Math.round(deposit).toLocaleString();
+  document.getElementById('loanAmt').value = '₦' + Math.round(loan).toLocaleString();
+  document.getElementById('monthlyPmt').textContent = '₦' + Math.round(monthly).toLocaleString();
+}
+calcMortgage();
+
+// ============ HERO CANVAS (Cinematic animation) ============
+const canvas = document.getElementById('heroCanvas');
+const ctx = canvas.getContext('2d');
+let w, h, particles = [], gradShift = 0;
+function resizeCanvas() {
+  w = canvas.width = canvas.offsetWidth;
+  h = canvas.height = canvas.offsetHeight;
+}
+resizeCanvas();
+window.addEventListener('resize', resizeCanvas);
+
+// Floating light particles
+for (let i = 0; i < 80; i++) {
+  particles.push({
+    x: Math.random() * 2000,
+    y: Math.random() * 1200,
+    r: Math.random() * 2 + 0.5,
+    vx: (Math.random() - 0.5) * 0.3,
+    vy: (Math.random() - 0.5) * 0.2,
+    opacity: Math.random() * 0.6 + 0.1
+  });
+}
+
+function drawHero() {
+  ctx.clearRect(0, 0, w, h);
+
+  // Animated gradient background simulating estate at twilight
+  gradShift += 0.002;
+  const grd = ctx.createLinearGradient(0, 0, w, h);
+  const t = (Math.sin(gradShift) + 1) / 2;
+  grd.addColorStop(0, `rgba(${Math.floor(10 + t*8)},${Math.floor(15 + t*10)},${Math.floor(10 + t*5)},1)`);
+  grd.addColorStop(0.4, `rgba(${Math.floor(8 + t*6)},${Math.floor(12 + t*8)},${Math.floor(20 + t*10)},1)`);
+  grd.addColorStop(0.7, `rgba(${Math.floor(15 + t*10)},${Math.floor(12 + t*8)},${Math.floor(5 + t*3)},1)`);
+  grd.addColorStop(1, 'rgba(5,5,5,1)');
+  ctx.fillStyle = grd;
+  ctx.fillRect(0, 0, w, h);
+
+  // Horizon glow
+  const horizonY = h * 0.62;
+  const horizGrd = ctx.createRadialGradient(w/2, horizonY, 0, w/2, horizonY, w * 0.6);
+  horizGrd.addColorStop(0, `rgba(201,168,76,${0.06 + t * 0.04})`);
+  horizGrd.addColorStop(1, 'rgba(201,168,76,0)');
+  ctx.fillStyle = horizGrd;
+  ctx.fillRect(0, 0, w, h);
+
+  // Ground silhouette (estate treeline)
+  ctx.fillStyle = `rgba(5,10,5,0.95)`;
+  ctx.beginPath();
+  ctx.moveTo(0, h);
+  ctx.lineTo(0, h * 0.72);
+  for (let x = 0; x < w; x += 35) {
+    const treeH = 40 + Math.sin(x * 0.05 + gradShift * 3) * 20 + Math.random() * 15;
+    ctx.lineTo(x, h * 0.72 - treeH);
+    ctx.lineTo(x + 17, h * 0.72 - treeH - 15);
+    ctx.lineTo(x + 35, h * 0.72 - treeH + 5);
+  }
+  ctx.lineTo(w, h * 0.72);
+  ctx.lineTo(w, h);
+  ctx.closePath();
+  ctx.fill();
+
+  // Building silhouettes
+  const buildings = [
+    {x: w*0.08, y: h*0.58, bw: 80, bh: 120},
+    {x: w*0.2, y: h*0.52, bw: 60, bh: 160},
+    {x: w*0.35, y: h*0.48, bw: 100, bh: 200},
+    {x: w*0.55, y: h*0.5, bw: 90, bh: 185},
+    {x: w*0.72, y: h*0.55, bw: 70, bh: 140},
+    {x: w*0.85, y: h*0.6, bw: 80, bh: 110}
+  ];
+  buildings.forEach(b => {
+    ctx.fillStyle = 'rgba(8,8,8,0.92)';
+    ctx.fillRect(b.x, h - b.bh - 40, b.bw, b.bh);
+    // Windows
+    for (let wy = h - b.bh - 30; wy < h - 50; wy += 22) {
+      for (let wx = b.x + 8; wx < b.x + b.bw - 12; wx += 18) {
+        if (Math.random() > 0.3) {
+          ctx.fillStyle = `rgba(201,168,76,${0.1 + Math.random() * 0.2})`;
+          ctx.fillRect(wx, wy, 10, 12);
+        }
+      }
+    }
+  });
+
+  // Road glow
+  ctx.fillStyle = `rgba(201,168,76,${0.03 + t * 0.02})`;
+  ctx.fillRect(w * 0.42, h * 0.7, w * 0.16, h * 0.3);
+
+  // Particles (stars / floating lights)
+  particles.forEach(p => {
+    p.x += p.vx;
+    p.y += p.vy;
+    if (p.x < 0) p.x = w;
+    if (p.x > w) p.x = 0;
+    if (p.y < 0) p.y = h;
+    if (p.y > h) p.y = 0;
+    if (p.y > h * 0.65) return; // Only above ground
+    ctx.beginPath();
+    ctx.arc(p.x % w, p.y % h, p.r, 0, Math.PI * 2);
+    ctx.fillStyle = `rgba(255,255,255,${p.opacity * (0.4 + t * 0.3)})`;
+    ctx.fill();
+  });
+
+  requestAnimationFrame(drawHero);
+}
+drawHero();
+
+// ============ CHATBOT ============
+function toggleChat() {
+  const widget = document.getElementById('chatbot-widget');
+  widget.classList.toggle('open');
+}
+
+const chatResponses = {
+  'price': 'Our properties range from ₦9.5M for Smart Bungalows, ₦18M–₦28M for Premium Duplexes, and ₦35M–₦55M for Luxury Mansions. We also offer flexible payment plans.',
+  'location': 'Ahlusunna Estate is located at Lane 12, Ibadan 110115, Oyo State, Nigeria. It is strategically positioned for easy access to major roads and amenities.',
+  'security': 'We maintain 24/7 professional security with trained guards, electronic surveillance systems, and a secure perimeter fence around the entire estate.',
+  'inspection': 'You can book a property inspection by calling 0806 675 6533 or via WhatsApp. We are open daily and can schedule a visit at your convenience.',
+  'payment': 'We offer flexible instalment payment plans. You can make an initial deposit and spread the balance over an agreed period. Contact us for tailored payment structures.',
+  'investment': 'Ahlusunna Estate is one of the best real estate investments in Ibadan today, with consistent land appreciation rates exceeding 240% over 5 years.',
+  'default': 'Thank you for your question! For the most accurate and up-to-date information, please call us on 0806 675 6533 or send us a WhatsApp message. We\'re happy to assist.'
+};
+
+function sendChat() {
+  const input = document.getElementById('chatInput');
+  const msg = input.value.trim();
+  if (!msg) return;
+  const body = document.getElementById('chatBody');
+  // User message
+  const userEl = document.createElement('div');
+  userEl.className = 'chat-msg user';
+  userEl.textContent = msg;
+  body.appendChild(userEl);
+  input.value = '';
+  body.scrollTop = body.scrollHeight;
+  // Bot response
+  setTimeout(() => {
+    const lc = msg.toLowerCase();
+    let response = chatResponses.default;
+    if (lc.includes('price') || lc.includes('cost') || lc.includes('how much')) response = chatResponses.price;
+    else if (lc.includes('location') || lc.includes('where') || lc.includes('address')) response = chatResponses.location;
+    else if (lc.includes('security') || lc.includes('safe')) response = chatResponses.security;
+    else if (lc.includes('inspection') || lc.includes('visit') || lc.includes('view')) response = chatResponses.inspection;
+    else if (lc.includes('payment') || lc.includes('instalment') || lc.includes('plan')) response = chatResponses.payment;
+    else if (lc.includes('invest') || lc.includes('return') || lc.includes('appreciate')) response = chatResponses.investment;
+    const botEl = document.createElement('div');
+    botEl.className = 'chat-msg bot';
+    botEl.textContent = response;
+    body.appendChild(botEl);
+    body.scrollTop = body.scrollHeight;
+  }, 800);
+}
+
+// ============ CONTACT FORM ============
+function handleInspection() {
+  const btn = event.currentTarget;
+  btn.textContent = '✓ Request Submitted — We\'ll Contact You Shortly';
+  btn.style.background = 'linear-gradient(135deg,#2a6a2a,#3a8a3a)';
+  btn.style.color = '#fff';
+  btn.disabled = true;
+  setTimeout(() => {
+    btn.textContent = 'Submit Inspection Request';
+    btn.style.background = '';
+    btn.style.color = '';
+    btn.disabled = false;
+  }, 5000);
+}
+
+// ============ PARALLAX on scroll ============
+window.addEventListener('scroll', () => {
+  const scrollY = window.scrollY;
+  const heroContent = document.querySelector('.hero-content');
+  if (heroContent && scrollY < window.innerHeight) {
+    heroContent.style.transform = `translateY(${scrollY * 0.25}px)`;
+    heroContent.style.opacity = 1 - scrollY / (window.innerHeight * 0.8);
+  }
+});
+
+// Smooth anchor scrolling
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const target = document.querySelector(a.getAttribute('href'));
+    if (target) {
+      e.preventDefault();
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  });
+});
+</script>
+</body>
+</html>
